@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
-
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 namespace WebService
 {
     /// <summary>
@@ -16,11 +18,24 @@ namespace WebService
     // [System.Web.Script.Services.ScriptService]
     public class WebService1 : System.Web.Services.WebService
     {
-
+        string conStr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
         [WebMethod]
-        public string HelloWorld(string a)
+        public DataTable GetData(string table)
         {
-            return "Hello World";
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM " + table))
+                {
+                    cmd.Connection = con;
+                    DataSet ds = new DataSet();
+                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                    {
+                        sda.Fill(ds, table);
+                    }
+                    return ds.Tables[0];
+                }
+
+            }
         }
     }
 }
