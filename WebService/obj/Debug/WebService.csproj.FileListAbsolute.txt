@@ -116,3 +116,7 @@ D:\ASP.NET-WebService\WebService\obj\Debug\WebService.csproj.CoreCompileInputs.c
 D:\ASP.NET-WebService\WebService\obj\Debug\WebService.csproj.CopyComplete
 D:\ASP.NET-WebService\WebService\obj\Debug\WebService.dll
 D:\ASP.NET-WebService\WebService\obj\Debug\WebService.pdb
+D:\ASP.NET-WebService\WebService\bin\EntityFramework.dll
+D:\ASP.NET-WebService\WebService\bin\EntityFramework.SqlServer.dll
+D:\ASP.NET-WebService\WebService\bin\EntityFramework.xml
+D:\ASP.NET-WebService\WebService\bin\EntityFramework.SqlServer.xml

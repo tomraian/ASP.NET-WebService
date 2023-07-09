@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Services;
 using System.Configuration;
@@ -20,7 +19,7 @@ namespace WebService
     {
         string conStr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
         [WebMethod]
-        public DataTable GetData(string table)
+        public DataTable LayDuLieu(string table)
         {
             using (SqlConnection con = new SqlConnection(conStr))
             {
@@ -34,8 +33,20 @@ namespace WebService
                     }
                     return ds.Tables[0];
                 }
-
             }
         }
+        [WebMethod]
+        public void ThemDuLieuDanhMuc(string tendanhmuc)
+        {
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                SqlCommand cmd = new SqlCommand("sp_InsertDanhMuc", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@tendanhmuc", tendanhmuc);
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
     }
 }
