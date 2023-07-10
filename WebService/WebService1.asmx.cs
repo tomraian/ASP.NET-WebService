@@ -17,24 +17,23 @@ namespace WebService
     // [System.Web.Script.Services.ScriptService]
     public class WebService1 : System.Web.Services.WebService
     {
-        string conStr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+        string conStr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString; // tạo kết nối tới sql bằng config
+        // lấy dữ liệu theo bảng bằng tham số được truyền
         [WebMethod]
         public DataTable LayDuLieu(string table)
         {
             using (SqlConnection con = new SqlConnection(conStr))
             {
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM " + table))
-                {
-                    cmd.Connection = con;
-                    DataSet ds = new DataSet();
-                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
-                    {
-                        sda.Fill(ds, table);
-                    }
-                    return ds.Tables[0];
-                }
+                SqlCommand cmd = new SqlCommand("sp_select",con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@tenbang",table);
+                DataSet ds = new DataSet();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(ds);
+                return ds.Tables[0];    
             }
         }
+        // Thêm danh mục
         [WebMethod]
         public void ThemDuLieuDanhMuc(string tendanhmuc)
         {
@@ -43,6 +42,20 @@ namespace WebService
                 SqlCommand cmd = new SqlCommand("sp_InsertDanhMuc", con);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@tendanhmuc", tendanhmuc);
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+        // xóa dữ liệu theo bảng và điều kiện
+        [WebMethod]
+        public void XoaDuLieu( string tenbang, string dieukien)
+        {
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                SqlCommand cmd = new SqlCommand("sp_delete", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@tenbang", tenbang);
+                cmd.Parameters.AddWithValue("@dieukien", dieukien);
                 con.Open();
                 cmd.ExecuteNonQuery();
             }
