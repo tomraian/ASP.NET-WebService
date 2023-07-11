@@ -83,6 +83,11 @@ namespace WebService
                 cmd.ExecuteNonQuery();
             }
         }
+        [WebMethod]
+        public int Hello(string ten)
+        {
+           
+        }
 
     }
 }
