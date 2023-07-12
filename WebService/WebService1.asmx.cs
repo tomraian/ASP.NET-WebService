@@ -6,6 +6,8 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.UI;
+using System.Xml;
+
 namespace WebService
 {
     /// <summary>
@@ -16,8 +18,14 @@ namespace WebService
     [System.ComponentModel.ToolboxItem(false)]
     // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
     // [System.Web.Script.Services.ScriptService]
+
     public class WebService1 : System.Web.Services.WebService
     {
+        [WebMethod(EnableSession = true)]
+        public string checkSession()
+        {
+            return HttpContext.Current.Session.SessionID;
+        }
         string conStr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString; // tạo kết nối tới sql bằng config
         // lấy dữ liệu theo bảng bằng tham số được truyền
         [WebMethod]
@@ -25,26 +33,39 @@ namespace WebService
         {
             using (SqlConnection con = new SqlConnection(conStr))
             {
-                SqlCommand cmd = new SqlCommand("sp_select",con);
+                SqlCommand cmd = new SqlCommand("sp_select", con);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@tenbang",table);
+                cmd.Parameters.AddWithValue("@tenbang", table);
                 DataSet ds = new DataSet();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(ds);
-                return ds.Tables[0];    
-            } 
+                return ds.Tables[0];
+            }
         }
         // Thêm danh mục
         [WebMethod]
-        public void ThemDuLieuDanhMuc(string tendanhmuc)
+        public bool ThemDuLieuDanhMuc(string tendanhmuc)
         {
-            using (SqlConnection con = new SqlConnection(conStr))
+            //using (SqlConnection con = new SqlConnection(conStr))
+            //{
+            //    SqlCommand cmd = new SqlCommand("sp_InsertDanhMuc", con);
+            //    cmd.CommandType = CommandType.StoredProcedure;
+            //    cmd.Parameters.AddWithValue("@tendanhmuc", tendanhmuc);
+            //    con.Open();
+            //    cmd.ExecuteNonQuery();
+            //}
+            Models.DanhMuc DanhMuc = new Models.DanhMuc
             {
-                SqlCommand cmd = new SqlCommand("sp_InsertDanhMuc", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@tendanhmuc", tendanhmuc);
-                con.Open();
-                cmd.ExecuteNonQuery();
+                TenDanhMuc = tendanhmuc
+            };
+            bool status = DanhMuc.ThemMoi();
+            if (status == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
         // Thêm Bài Viết
@@ -71,7 +92,7 @@ namespace WebService
         }
         // xóa dữ liệu theo bảng và điều kiện
         [WebMethod]
-        public void XoaDuLieu( string tenbang, string dieukien)
+        public void XoaDuLieu(string tenbang, string dieukien)
         {
             using (SqlConnection con = new SqlConnection(conStr))
             {
@@ -81,13 +102,15 @@ namespace WebService
                 cmd.Parameters.AddWithValue("@dieukien", dieukien);
                 con.Open();
                 cmd.ExecuteNonQuery();
+                XmlDocument doc = new XmlDocument();
+                //doc.Load()
             }
         }
-        [WebMethod]
-        public int Hello(string ten)
-        {
-           
-        }
+        //[WebMethod]
+        //public void Hello(string ten)
+        //{
+        //    return ten;
+        //}
 
     }
 }
