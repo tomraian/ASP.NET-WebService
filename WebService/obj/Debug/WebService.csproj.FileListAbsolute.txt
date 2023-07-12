@@ -120,3 +120,7 @@ D:\ASP.NET-WebService\WebService\bin\EntityFramework.dll
 D:\ASP.NET-WebService\WebService\bin\EntityFramework.SqlServer.dll
 D:\ASP.NET-WebService\WebService\bin\EntityFramework.xml
 D:\ASP.NET-WebService\WebService\bin\EntityFramework.SqlServer.xml
+D:\ASP.NET\ASP.NET-WebService\WebService\bin\EntityFramework.dll
+D:\ASP.NET\ASP.NET-WebService\WebService\bin\EntityFramework.SqlServer.dll
+D:\ASP.NET\ASP.NET-WebService\WebService\bin\EntityFramework.xml
+D:\ASP.NET\ASP.NET-WebService\WebService\bin\EntityFramework.SqlServer.xml
