@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Thêm mới danh mục" Language="C#" MasterPageFile="~/Admin/TrangChu/Admin.master" AutoEventWireup="true" CodeFile="ThemMoi.aspx.cs" Inherits="Admin_Default" %>
+﻿<%@ Page Title="Thêm mới danh mục" Language="C#" MasterPageFile="~/Admin/TrangChu/Admin.master" AutoEventWireup="true" CodeFile="CapNhat.aspx.cs" Inherits="Admin_Default" %>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="cssContent" runat="Server">
 </asp:Content>
@@ -19,7 +19,7 @@
                                             <span class="text-muted font-14">(Tối đa <code>50 </code>ký tự)
                                             </span>
                                         </label>
-                                        <asp:TextBox ID="TenDanhMuc" runat="server" class="form-control"></asp:TextBox>
+                                        <asp:TextBox ID="txtTenDanhMuc" runat="server" class="form-control"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>

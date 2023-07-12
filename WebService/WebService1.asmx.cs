@@ -29,7 +29,7 @@ namespace WebService
         string conStr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString; // tạo kết nối tới sql bằng config
         // lấy dữ liệu theo bảng bằng tham số được truyền
         [WebMethod]
-        public DataTable LayDuLieu(string table)
+        public DataSet LayDuLieu(string table)
         {
             using (SqlConnection con = new SqlConnection(conStr))
             {
@@ -39,7 +39,7 @@ namespace WebService
                 DataSet ds = new DataSet();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(ds);
-                return ds.Tables[0];
+                return ds;
             }
         }
         // Thêm danh mục
@@ -102,15 +102,7 @@ namespace WebService
                 cmd.Parameters.AddWithValue("@dieukien", dieukien);
                 con.Open();
                 cmd.ExecuteNonQuery();
-                XmlDocument doc = new XmlDocument();
-                //doc.Load()
             }
         }
-        //[WebMethod]
-        //public void Hello(string ten)
-        //{
-        //    return ten;
-        //}
-
     }
 }

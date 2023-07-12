@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="checkSession">
+        <s:complexType />
+      </s:element>
+      <s:element name="checkSessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="checkSessionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LayDuLieu">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="table" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LayDuLieuResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LayDuLieuResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ThemDuLieuDanhMuc">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tendanhmuc" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ThemDuLieuDanhMucResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ThemDuLieuDanhMucResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ThemDuLieuBaiViet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tieude" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tomtat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="noidung" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="hinhthunho" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="chuthichhinh" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="luotxem" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ngaydang" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="manguoidung" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="madanhmuc" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ThemDuLieuBaiVietResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="XoaDuLieu">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tenbang" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dieukien" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="XoaDuLieuResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetLocation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="location" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLocationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLocationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="checkSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:checkSession" />
+  </wsdl:message>
+  <wsdl:message name="checkSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:checkSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="LayDuLieuSoapIn">
+    <wsdl:part name="parameters" element="tns:LayDuLieu" />
+  </wsdl:message>
+  <wsdl:message name="LayDuLieuSoapOut">
+    <wsdl:part name="parameters" element="tns:LayDuLieuResponse" />
+  </wsdl:message>
+  <wsdl:message name="ThemDuLieuDanhMucSoapIn">
+    <wsdl:part name="parameters" element="tns:ThemDuLieuDanhMuc" />
+  </wsdl:message>
+  <wsdl:message name="ThemDuLieuDanhMucSoapOut">
+    <wsdl:part name="parameters" element="tns:ThemDuLieuDanhMucResponse" />
+  </wsdl:message>
+  <wsdl:message name="ThemDuLieuBaiVietSoapIn">
+    <wsdl:part name="parameters" element="tns:ThemDuLieuBaiViet" />
+  </wsdl:message>
+  <wsdl:message name="ThemDuLieuBaiVietSoapOut">
+    <wsdl:part name="parameters" element="tns:ThemDuLieuBaiVietResponse" />
+  </wsdl:message>
+  <wsdl:message name="XoaDuLieuSoapIn">
+    <wsdl:part name="parameters" element="tns:XoaDuLieu" />
+  </wsdl:message>
+  <wsdl:message name="XoaDuLieuSoapOut">
+    <wsdl:part name="parameters" element="tns:XoaDuLieuResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLocationSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLocation" />
+  </wsdl:message>
+  <wsdl:message name="GetLocationSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLocationResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebService1Soap">
+    <wsdl:operation name="checkSession">
+      <wsdl:input message="tns:checkSessionSoapIn" />
+      <wsdl:output message="tns:checkSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LayDuLieu">
+      <wsdl:input message="tns:LayDuLieuSoapIn" />
+      <wsdl:output message="tns:LayDuLieuSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ThemDuLieuDanhMuc">
+      <wsdl:input message="tns:ThemDuLieuDanhMucSoapIn" />
+      <wsdl:output message="tns:ThemDuLieuDanhMucSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ThemDuLieuBaiViet">
+      <wsdl:input message="tns:ThemDuLieuBaiVietSoapIn" />
+      <wsdl:output message="tns:ThemDuLieuBaiVietSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="XoaDuLieu">
+      <wsdl:input message="tns:XoaDuLieuSoapIn" />
+      <wsdl:output message="tns:XoaDuLieuSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLocation">
+      <wsdl:input message="tns:GetLocationSoapIn" />
+      <wsdl:output message="tns:GetLocationSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebService1Soap" type="tns:WebService1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="checkSession">
+      <soap:operation soapAction="http://tempuri.org/checkSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LayDuLieu">
+      <soap:operation soapAction="http://tempuri.org/LayDuLieu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ThemDuLieuDanhMuc">
+      <soap:operation soapAction="http://tempuri.org/ThemDuLieuDanhMuc" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ThemDuLieuBaiViet">
+      <soap:operation soapAction="http://tempuri.org/ThemDuLieuBaiViet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XoaDuLieu">
+      <soap:operation soapAction="http://tempuri.org/XoaDuLieu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocation">
+      <soap:operation soapAction="http://tempuri.org/GetLocation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebService1Soap12" type="tns:WebService1Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="checkSession">
+      <soap12:operation soapAction="http://tempuri.org/checkSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LayDuLieu">
+      <soap12:operation soapAction="http://tempuri.org/LayDuLieu" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ThemDuLieuDanhMuc">
+      <soap12:operation soapAction="http://tempuri.org/ThemDuLieuDanhMuc" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ThemDuLieuBaiViet">
+      <soap12:operation soapAction="http://tempuri.org/ThemDuLieuBaiViet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XoaDuLieu">
+      <soap12:operation soapAction="http://tempuri.org/XoaDuLieu" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocation">
+      <soap12:operation soapAction="http://tempuri.org/GetLocation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService1">
+    <wsdl:port name="WebService1Soap" binding="tns:WebService1Soap">
+      <soap:address location="https://localhost:44324/WebService1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebService1Soap12" binding="tns:WebService1Soap12">
+      <soap12:address location="https://localhost:44324/WebService1.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
