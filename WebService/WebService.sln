@@ -26,6 +26,9 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ConsumingWebServiceASP.NET"
 		SlnRelativePath = "..\ConsumingWebServiceASP.NET\"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
+	ProjectSection(ProjectDependencies) = postProject
+		{EA980FC5-FB46-45F2-850F-085177891CDB} = {EA980FC5-FB46-45F2-850F-085177891CDB}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
