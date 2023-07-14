@@ -53,9 +53,26 @@
 
             }
         }
-        public void CapNhat()
+        public bool CapNhat()
         {
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                SqlCommand cmd = new SqlCommand("sp_updateDanhMuc", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@madanhmuc", MaDanhMuc);
+                cmd.Parameters.AddWithValue("@tendanhmuc", TenDanhMuc);
+                con.Open();
+                int count = cmd.ExecuteNonQuery();
+                if (count > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
 
+            }
         }
     }
 }

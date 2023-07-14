@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Web.UI;
 using System.Xml;
+using WebService.Models;
 
 namespace WebService
 {
@@ -68,29 +69,120 @@ namespace WebService
                 return false;
             }
         }
+        // Sửa danh mục
+        [WebMethod]
+        public bool CapNhatDuLieuDanhMuc(int madanhmuc, string tendanhmuc)
+        {
+            //using (SqlConnection con = new SqlConnection(conStr))
+            //{
+            //    SqlCommand cmd = new SqlCommand("sp_InsertDanhMuc", con);
+            //    cmd.CommandType = CommandType.StoredProcedure;
+            //    cmd.Parameters.AddWithValue("@tendanhmuc", tendanhmuc);
+            //    con.Open();
+            //    cmd.ExecuteNonQuery();
+            //}
+            Models.DanhMuc DanhMuc = new Models.DanhMuc
+            {
+                MaDanhMuc = madanhmuc,
+                TenDanhMuc = tendanhmuc
+            };
+            bool status = DanhMuc.CapNhat();
+            if (status == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         // Thêm Bài Viết
         [WebMethod]
-        public void ThemDuLieuBaiViet(string tieude, string tomtat, string noidung, string hinhthunho, string chuthichhinh, int luotxem,
-                                      DateTime ngaydang, int manguoidung, int madanhmuc)
+        public bool ThemDuLieuBaiViet(string tieude, string tomtat, string noidung, string hinhthunho, string chuthichhinh, int luotxem,DateTime ngaydang, int manguoidung, int madanhmuc)
         {
             using (SqlConnection con = new SqlConnection(conStr))
             {
-                SqlCommand cmd = new SqlCommand("sp_InsertBaiViet", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@tieude", tieude);
-                cmd.Parameters.AddWithValue("@tomtat", tomtat);
-                cmd.Parameters.AddWithValue("@noidung", noidung);
-                cmd.Parameters.AddWithValue("@hinhthunho", hinhthunho);
-                cmd.Parameters.AddWithValue("@chuthichhinh", chuthichhinh);
-                cmd.Parameters.AddWithValue("@luotxem", luotxem);
-                cmd.Parameters.AddWithValue("@ngaydang", ngaydang);
-                cmd.Parameters.AddWithValue("@manguoidung", manguoidung);
-                cmd.Parameters.AddWithValue("@madanhmuc", madanhmuc);
-                con.Open();
-                cmd.ExecuteNonQuery();
+                //SqlCommand cmd = new SqlCommand("sp_InsertBaiViet", con);
+                //cmd.CommandType = CommandType.StoredProcedure;
+                //cmd.Parameters.AddWithValue("@tieude", tieude);
+                //cmd.Parameters.AddWithValue("@tomtat", tomtat);
+                //cmd.Parameters.AddWithValue("@noidung", noidung);
+                //cmd.Parameters.AddWithValue("@hinhthunho", hinhthunho);
+                //cmd.Parameters.AddWithValue("@chuthichhinh", chuthichhinh);
+                //cmd.Parameters.AddWithValue("@luotxem", luotxem);
+                //cmd.Parameters.AddWithValue("@ngaydang", ngaydang);
+                //cmd.Parameters.AddWithValue("@manguoidung", manguoidung);
+                //cmd.Parameters.AddWithValue("@madanhmuc", madanhmuc);
+                //con.Open();
+                //cmd.ExecuteNonQuery();
+                Models.BaiViet baiViet = new Models.BaiViet
+                {
+                    TieuDe = tieude,
+                    TomTat = tomtat,
+                    NoiDung = noidung,
+                    HinhThuNho = hinhthunho,
+                    ChuThichHinh = chuthichhinh,
+                    LuotXem = luotxem,
+                    NgayDang = ngaydang,
+                    MaNguoiDung = manguoidung,
+                    MaDanhMuc = madanhmuc
+                };
+                bool status = baiViet.ThemMoi();
+                if (status == true)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
         // xóa dữ liệu theo bảng và điều kiện
+        [WebMethod]
+        public bool CapNhatDuLieuBaiViet(int mabaiviet,string tieude, string tomtat, string noidung, string hinhthunho, string chuthichhinh, int luotxem, DateTime ngaydang, int manguoidung, int madanhmuc)
+        {
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                //SqlCommand cmd = new SqlCommand("sp_InsertBaiViet", con);
+                //cmd.CommandType = CommandType.StoredProcedure;
+                //cmd.Parameters.AddWithValue("@tieude", tieude);
+                //cmd.Parameters.AddWithValue("@tomtat", tomtat);
+                //cmd.Parameters.AddWithValue("@noidung", noidung);
+                //cmd.Parameters.AddWithValue("@hinhthunho", hinhthunho);
+                //cmd.Parameters.AddWithValue("@chuthichhinh", chuthichhinh);
+                //cmd.Parameters.AddWithValue("@luotxem", luotxem);
+                //cmd.Parameters.AddWithValue("@ngaydang", ngaydang);
+                //cmd.Parameters.AddWithValue("@manguoidung", manguoidung);
+                //cmd.Parameters.AddWithValue("@madanhmuc", madanhmuc);
+                //con.Open();
+                //cmd.ExecuteNonQuery();
+                Models.BaiViet baiViet = new Models.BaiViet
+                {
+                    MaBaiViet = mabaiviet,  
+                    TieuDe = tieude,
+                    TomTat = tomtat,
+                    NoiDung = noidung,
+                    HinhThuNho = hinhthunho,
+                    ChuThichHinh = chuthichhinh,
+                    LuotXem = luotxem,
+                    NgayDang = ngaydang,
+                    MaNguoiDung = manguoidung,
+                    MaDanhMuc = madanhmuc
+                };
+                bool status = baiViet.CapNhat();
+                if (status == true)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+        // xóa dữ liệu theo bảng và điều kiện
+
         [WebMethod]
         public void XoaDuLieu(string tenbang, string dieukien)
         {
