@@ -4,7 +4,10 @@ namespace WebService.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.Configuration;
+    using System.Data;
     using System.Data.Entity.Spatial;
+    using System.Data.SqlClient;
 
     [Table("BaiViet")]
     public partial class BaiViet
@@ -55,5 +58,64 @@ namespace WebService.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FileUpLoad> FileUpLoads { get; set; }
+        string conStr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+
+        public bool ThemMoi()
+        {
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                SqlCommand cmd = new SqlCommand("sp_InsertBaiViet", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@tieude", TieuDe);
+                cmd.Parameters.AddWithValue("@tomtat", TomTat);
+                cmd.Parameters.AddWithValue("@noidung", NoiDung);
+                cmd.Parameters.AddWithValue("@hinhthunho", HinhThuNho);
+                cmd.Parameters.AddWithValue("@chuthichhinh", ChuThichHinh);
+                cmd.Parameters.AddWithValue("@luotxem", LuotXem);
+                cmd.Parameters.AddWithValue("@ngaydang", NgayDang);
+                cmd.Parameters.AddWithValue("@manguoidung", MaNguoiDung);
+                cmd.Parameters.AddWithValue("@madanhmuc", MaDanhMuc);
+                con.Open();
+                int count = cmd.ExecuteNonQuery();
+                if (count > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+        }
+        public bool CapNhat()
+        {
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                SqlCommand cmd = new SqlCommand("sp_updatebaiViet", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@mabaiviet", MaBaiViet);
+                cmd.Parameters.AddWithValue("@tieude", TieuDe);
+                cmd.Parameters.AddWithValue("@tomtat", TomTat);
+                cmd.Parameters.AddWithValue("@noidung", NoiDung);
+                cmd.Parameters.AddWithValue("@hinhthunho", HinhThuNho);
+                cmd.Parameters.AddWithValue("@chuthichhinh", ChuThichHinh);
+                cmd.Parameters.AddWithValue("@luotxem", LuotXem);
+                cmd.Parameters.AddWithValue("@ngaydang", NgayDang);
+                cmd.Parameters.AddWithValue("@manguoidung", MaNguoiDung);
+                cmd.Parameters.AddWithValue("@madanhmuc", MaDanhMuc);
+                con.Open();
+                int count = cmd.ExecuteNonQuery();
+                if (count > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+        }
     }
 }
