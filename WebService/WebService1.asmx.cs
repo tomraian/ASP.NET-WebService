@@ -181,6 +181,46 @@ namespace WebService
                 }
             }
         }
+        //public bool ThemDuLieuNguoiDung(string tieude, string tomtat, string noidung, string hinhthunho, string chuthichhinh, int luotxem, DateTime ngaydang, int manguoidung, int madanhmuc)
+        //{
+        //    using (SqlConnection con = new SqlConnection(conStr))
+        //    {
+        //        //SqlCommand cmd = new SqlCommand("sp_InsertBaiViet", con);
+        //        //cmd.CommandType = CommandType.StoredProcedure;
+        //        //cmd.Parameters.AddWithValue("@tieude", tieude);
+        //        //cmd.Parameters.AddWithValue("@tomtat", tomtat);
+        //        //cmd.Parameters.AddWithValue("@noidung", noidung);
+        //        //cmd.Parameters.AddWithValue("@hinhthunho", hinhthunho);
+        //        //cmd.Parameters.AddWithValue("@chuthichhinh", chuthichhinh);
+        //        //cmd.Parameters.AddWithValue("@luotxem", luotxem);
+        //        //cmd.Parameters.AddWithValue("@ngaydang", ngaydang);
+        //        //cmd.Parameters.AddWithValue("@manguoidung", manguoidung);
+        //        //cmd.Parameters.AddWithValue("@madanhmuc", madanhmuc);
+        //        //con.Open();
+        //        //cmd.ExecuteNonQuery();
+        //        Models.BaiViet baiViet = new Models.BaiViet
+        //        {
+        //            TieuDe = tieude,
+        //            TomTat = tomtat,
+        //            NoiDung = noidung,
+        //            HinhThuNho = hinhthunho,
+        //            ChuThichHinh = chuthichhinh,
+        //            LuotXem = luotxem,
+        //            NgayDang = ngaydang,
+        //            MaNguoiDung = manguoidung,
+        //            MaDanhMuc = madanhmuc
+        //        };
+        //        bool status = baiViet.ThemMoi();
+        //        if (status == true)
+        //        {
+        //            return true;
+        //        }
+        //        else
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //}
         // xóa dữ liệu theo bảng và điều kiện
 
         [WebMethod]

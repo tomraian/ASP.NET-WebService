@@ -4,7 +4,10 @@ namespace WebService.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.Configuration;
+    using System.Data;
     using System.Data.Entity.Spatial;
+    using System.Data.SqlClient;
 
     [Table("NguoiDung")]
     public partial class NguoiDung
@@ -54,5 +57,35 @@ namespace WebService.Models
         public virtual ICollection<BinhLuan> BinhLuans { get; set; }
 
         public virtual VaiTro VaiTro1 { get; set; }
+        string conStr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+
+        public bool themmoi()
+        {
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                SqlCommand cmd = new SqlCommand("sp_InsertNguoiDung", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@tennguoidung", TenNguoiDung);
+                cmd.Parameters.AddWithValue("@email", Email);
+                cmd.Parameters.AddWithValue("@matkhau", MatKhau);
+                cmd.Parameters.AddWithValue("@hinhdaidien", HinhDaiDien);
+                cmd.Parameters.AddWithValue("@ngaysinh", NgaySinh);
+                cmd.Parameters.AddWithValue("@diachi", DiaChi);
+                cmd.Parameters.AddWithValue("@sdt", SDT);
+                cmd.Parameters.AddWithValue("@gioitinh", GioiTinh);
+                cmd.Parameters.AddWithValue("@vaitro", VaiTro);
+                con.Open();
+                int count = cmd.ExecuteNonQuery();
+                if (count > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+        }
     }
 }
