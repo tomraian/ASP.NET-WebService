@@ -1,0 +1,10 @@
+-------- đặt mặc định lượt xem là 0 ---------
+ALTER TABLE BaiViet 
+ADD DEFAULT(0) FOR LuotXem
+--------
+CREATE PROCEDURE [dbo].[Procedure]
+	@param1 int = 0,
+	@param2 int
+AS
+	SELECT @param1, @param2
+RETURN 0
