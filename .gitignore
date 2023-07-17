@@ -13,3 +13,6 @@ WebService/.vs/WebService/v16/.suo
 *.dll
 *.pdb
 *.config
+*.cache
+WebService/bin/WebService.dll.config
+WebService/.vs/WebService/v16/.suo
