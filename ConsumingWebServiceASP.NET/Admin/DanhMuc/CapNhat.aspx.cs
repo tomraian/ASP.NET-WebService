@@ -13,13 +13,12 @@ public partial class Admin_Default : System.Web.UI.Page
     {
         if (!String.IsNullOrEmpty(Request.QueryString["MaDanhMuc"]))
         {
-            
             var MaDanhMuc = Request.QueryString["MaDanhMuc"];
-            DataSet DanhMuc = ServiceTinTuc.LayDuLieu("danhmuc where MaDanhMuc = '" + MaDanhMuc + "' ");
-            int count = DanhMuc.Tables[0].Rows.Count;
+            var tendanhmuc = ServiceTinTuc.LayDuLieu("danhmuc where MaDanhMuc = '" + MaDanhMuc + "' ");
+            int count = tendanhmuc.Tables[0].Rows.Count;
             if (count > 0)
             {
-                txtTenDanhMuc.Text = DanhMuc.Tables[0].Rows[0]["TenDanhMuc"].ToString();
+                lbltest.Text = "Tên danh mục cũ: " + tendanhmuc.Tables[0].Rows[0][1].ToString();
             }
             else
             {
@@ -30,30 +29,45 @@ public partial class Admin_Default : System.Web.UI.Page
     }
     protected void Submit_Click(object sender, EventArgs e)
     {
-        var MaDanhMuc = Request.QueryString["MaDanhMuc"];
-        var tendanhmuc = txtTenDanhMuc.Text.ToString();
-        bool status = ServiceTinTuc.CapNhatDuLieuDanhMuc(Convert.ToInt32(MaDanhMuc), tendanhmuc);
-        if (status == true)
+        var MaDanhMuc = Convert.ToInt32(Request.QueryString["MaDanhMuc"].ToString());
+        var TenDanhMuc = txtTenDanhMuc.Text;
+        if (TenDanhMuc == "")
         {
-            Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Cập nhật thành công',position: 'top-right',loaderBg: '#004b36',bgColor:'#0ACF97'}) });</script>");
+            Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Tên Danh mục không được để trống',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c '}) });</script>");
+        }else
+        {
+            bool status = ServiceTinTuc.CapNhatDuLieuDanhMuc(MaDanhMuc, TenDanhMuc);
+            if (status == true)
+            {
+                Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Cập nhật thành công',position: 'top-right',loaderBg: '#004b36',bgColor:'#0ACF97'}) });</script>");
+            }
+            else
+            {
+                Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Cập nhật thất bại',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c '}) });</script>");
+            }
+        }
+        
+    }
+    protected void SubmitBack_Click(object sender, EventArgs e)
+    {
+        var MaDanhMuc = Convert.ToInt32(Request.QueryString["MaDanhMuc"].ToString());
+        var TenDanhMuc = txtTenDanhMuc.Text;
+        if (TenDanhMuc == "")
+        {
+            Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Tên Danh mục không được để trống',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c '}) });</script>");
         }
         else
         {
-            Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Cập nhật thất bại',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c '}) });</script>");
+            bool status = ServiceTinTuc.CapNhatDuLieuDanhMuc(MaDanhMuc, TenDanhMuc);
+            if (status == true)
+            {
+                Response.Redirect("DanhSach.aspx");
+            }
+            else
+            {
+                Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Cập nhật thất bại',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c '}) });</script>");
+            }
         }
-    }
-
-    protected void SubmitBack_Click(object sender, EventArgs e)
-    {
-        //ServiceTinTuc.WebService1SoapClient ServiceTinTuc = new ServiceTinTuc.WebService1SoapClient();
-        //bool status = ServiceTinTuc.ThemDuLieuDanhMuc(TenDanhMuc.Text.ToString());
-        //if (status == true)
-        //{
-        //    Response.Redirect("DanhSach.aspx");
-        //}
-        //else
-        //{
-        //    Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Thêm thất bại',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c '}) });</script>");
-        //}
+        
     }
 }

@@ -20,6 +20,8 @@
                                             </span>
                                         </label>
                                         <asp:TextBox ID="txtTenDanhMuc" runat="server" class="form-control"></asp:TextBox>
+                                       
+                                        <asp:Label ID="lbltest" runat="server" Text="Label"></asp:Label>
                                     </div>
                                 </div>
                             </div>
