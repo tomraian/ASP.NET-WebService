@@ -1,10 +1,28 @@
 -------- đặt mặc định lượt xem là 0 ---------
 ALTER TABLE BaiViet 
 ADD DEFAULT(0) FOR LuotXem
---------
-CREATE PROCEDURE [dbo].[Procedure]
-	@param1 int = 0,
-	@param2 int
+---------store procedure cap nhat Nguoi Dung------------------
+CREATE PROCEDURE sp_updateNguoiDung @manguoidung int, @tennguoidung nvarchar(50),@email text,
+@matkhau nvarchar(50),@hinhdaidien text,@ngaysinh datetime,@diachi ntext,@sdt int,
+@gioitinh tinyint,@vaitro int
 AS
-	SELECT @param1, @param2
+begin
+	UPDATE NguoiDung SET TenNguoiDung = @tennguoidung,Email=@email,MatKhau = @matkhau,HinhDaiDien=@hinhdaidien,
+	NgaySinh = @ngaysinh,DiaChi = @diachi,SDT = @sdt,GioiTinh = @gioitinh,VaiTro = @vaitro where MaNguoiDung = @manguoidung
+end
 RETURN 0
+--------------store procedure thêm dữ liệu Bình luận------------------
+CREATE PROCEDURE sp_InsertBinhLuan @Noidung ntext,@ngaydang datetime,
+@manguoidung int, @mabaiviet int
+AS
+begin
+	insert into BinhLuan values(@Noidung,@ngaydang,@manguoidung,@mabaiviet)
+	end
+----store procedure Cập nhật dữ liệu nội dung Bình luận-----------------
+CREATE PROCEDURE sp_updateBinhLuan @mabinhluan int, @Noidung ntext,@ngaydang datetime,
+@manguoidung int, @mabaiviet int
+AS
+begin
+	update BinhLuan set NoiDung = @Noidung,NgayDang= @ngaydang,MaNguoiDung= @manguoidung,
+	MaBaiViet = @mabaiviet where MaBinhLuan = @mabinhluan
+	end

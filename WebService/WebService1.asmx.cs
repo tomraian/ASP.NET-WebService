@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Web.UI;
 using System.Xml;
 using WebService.Models;
+using Microsoft.SqlServer.Server;
 
 namespace WebService
 {
@@ -181,48 +182,117 @@ namespace WebService
                 }
             }
         }
-        //public bool ThemDuLieuNguoiDung(string tieude, string tomtat, string noidung, string hinhthunho, string chuthichhinh, int luotxem, DateTime ngaydang, int manguoidung, int madanhmuc)
-        //{
-        //    using (SqlConnection con = new SqlConnection(conStr))
-        //    {
-        //        //SqlCommand cmd = new SqlCommand("sp_InsertBaiViet", con);
-        //        //cmd.CommandType = CommandType.StoredProcedure;
-        //        //cmd.Parameters.AddWithValue("@tieude", tieude);
-        //        //cmd.Parameters.AddWithValue("@tomtat", tomtat);
-        //        //cmd.Parameters.AddWithValue("@noidung", noidung);
-        //        //cmd.Parameters.AddWithValue("@hinhthunho", hinhthunho);
-        //        //cmd.Parameters.AddWithValue("@chuthichhinh", chuthichhinh);
-        //        //cmd.Parameters.AddWithValue("@luotxem", luotxem);
-        //        //cmd.Parameters.AddWithValue("@ngaydang", ngaydang);
-        //        //cmd.Parameters.AddWithValue("@manguoidung", manguoidung);
-        //        //cmd.Parameters.AddWithValue("@madanhmuc", madanhmuc);
-        //        //con.Open();
-        //        //cmd.ExecuteNonQuery();
-        //        Models.BaiViet baiViet = new Models.BaiViet
-        //        {
-        //            TieuDe = tieude,
-        //            TomTat = tomtat,
-        //            NoiDung = noidung,
-        //            HinhThuNho = hinhthunho,
-        //            ChuThichHinh = chuthichhinh,
-        //            LuotXem = luotxem,
-        //            NgayDang = ngaydang,
-        //            MaNguoiDung = manguoidung,
-        //            MaDanhMuc = madanhmuc
-        //        };
-        //        bool status = baiViet.ThemMoi();
-        //        if (status == true)
-        //        {
-        //            return true;
-        //        }
-        //        else
-        //        {
-        //            return false;
-        //        }
-        //    }
-        //}
-        // xóa dữ liệu theo bảng và điều kiện
+        // Thêm mới dữ liệu người dùng
+        [WebMethod]
+        public bool ThemDuLieuNguoiDung(string TenNguoiDung, string Email, string MatKhau, string HinhDaiDien, DateTime NgaySinh, string DiaChi, int SDT, byte GioiTinh, int VaiTro)
+        {
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                Models.NguoiDung Nguoidung = new Models.NguoiDung
+                {
+                    TenNguoiDung = TenNguoiDung,
+                    Email = Email,
+                    MatKhau = MatKhau,
+                    HinhDaiDien = HinhDaiDien,
+                    NgaySinh = NgaySinh,
+                    DiaChi = DiaChi,
+                    SDT = SDT,
+                    GioiTinh = GioiTinh,
+                    VaiTro = VaiTro
+                };
+                bool status = Nguoidung.themmoi();
+                if (status == true)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+        // Cập nhật dữ liệu người dùng
 
+        [WebMethod]
+
+        public bool CapNhatDuLieuNguoiDung(int manguoidung,string TenNguoiDung, string Email, string MatKhau, string HinhDaiDien, DateTime NgaySinh, string DiaChi, int SDT, byte GioiTinh, int VaiTro)
+        {
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                Models.NguoiDung Nguoidung = new Models.NguoiDung
+                {
+                    MaNguoiDung= manguoidung,
+                    TenNguoiDung = TenNguoiDung,
+                    Email = Email,
+                    MatKhau = MatKhau,
+                    HinhDaiDien = HinhDaiDien,
+                    NgaySinh = NgaySinh,
+                    DiaChi = DiaChi,
+                    SDT = SDT,
+                    GioiTinh = GioiTinh,
+                    VaiTro = VaiTro
+                };
+                bool status = Nguoidung.CapNhap();
+                if (status == true)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+        // Thêm mới dữ liệu bình luận
+        [WebMethod]
+        public bool ThemDuLieuBinhLuan( string noidung, DateTime ngaydang, int manguoidung, int mabaiviet)
+        {
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                Models.BinhLuan binhluan = new Models.BinhLuan
+                {
+                   NoiDung = noidung,   
+                   NgayDang = ngaydang, 
+                   MaNguoiDung  = manguoidung,
+                   MaBaiViet = mabaiviet
+                };
+                bool status = binhluan.ThemMoi();
+                if (status == true)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+        // Cập nhật dữ liệu bình luận
+        [WebMethod]
+        public bool CapnhatDuLieuBinhLuan(int mabinhluan,string noidung, int manguoidung, int mabaiviet)
+        {
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                Models.BinhLuan binhluan = new Models.BinhLuan
+                {
+                    MaBinhLuan = mabinhluan,    
+                    NoiDung = noidung,
+                    NgayDang = Convert.ToDateTime(DateTime.Now.ToString("dd/MM/yyyy")),
+                    MaNguoiDung = manguoidung,
+                    MaBaiViet = mabaiviet
+                };
+                bool status = binhluan.CapNhat();
+                if (status == true)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+        // xóa dữ liệu theo bảng và điều kiện
         [WebMethod]
         public void XoaDuLieu(string tenbang, string dieukien)
         {
