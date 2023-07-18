@@ -84,8 +84,36 @@ namespace WebService.Models
                 {
                     return false;
                 }
-
             }
         }
+        public bool CapNhap()
+        {
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                SqlCommand cmd = new SqlCommand("sp_updateNguoiDung", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@manguoidung", MaNguoiDung);
+                cmd.Parameters.AddWithValue("@tennguoidung", TenNguoiDung);
+                cmd.Parameters.AddWithValue("@email", Email);
+                cmd.Parameters.AddWithValue("@matkhau", MatKhau);
+                cmd.Parameters.AddWithValue("@hinhdaidien", HinhDaiDien);
+                cmd.Parameters.AddWithValue("@ngaysinh", NgaySinh);
+                cmd.Parameters.AddWithValue("@diachi", DiaChi);
+                cmd.Parameters.AddWithValue("@sdt", SDT);
+                cmd.Parameters.AddWithValue("@gioitinh", GioiTinh);
+                cmd.Parameters.AddWithValue("@vaitro", VaiTro);
+                con.Open();
+                int count = cmd.ExecuteNonQuery();
+                if (count > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
     }
 }
