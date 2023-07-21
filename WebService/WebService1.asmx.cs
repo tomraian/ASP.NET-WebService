@@ -9,6 +9,8 @@ using System.Web.UI;
 using System.Xml;
 using WebService.Models;
 using Microsoft.SqlServer.Server;
+using System.IO;
+using System.Diagnostics;
 
 namespace WebService
 {
@@ -99,7 +101,7 @@ namespace WebService
         }
         // Thêm Bài Viết
         [WebMethod]
-        public bool ThemDuLieuBaiViet(string tieude, string tomtat, string noidung, string hinhthunho, string chuthichhinh, int luotxem,DateTime ngaydang, int manguoidung, int madanhmuc)
+        public bool ThemDuLieuBaiViet(string tieude, string tomtat, string noidung, string hinhthunho, string chuthichhinh, int luotxem, DateTime ngaydang, int manguoidung, int madanhmuc)
         {
             using (SqlConnection con = new SqlConnection(conStr))
             {
@@ -141,7 +143,7 @@ namespace WebService
         }
         // xóa dữ liệu theo bảng và điều kiện
         [WebMethod]
-        public bool CapNhatDuLieuBaiViet(int mabaiviet,string tieude, string tomtat, string noidung, string hinhthunho, string chuthichhinh, int luotxem, DateTime ngaydang, int manguoidung, int madanhmuc)
+        public bool CapNhatDuLieuBaiViet(int mabaiviet, string tieude, string tomtat, string noidung, string hinhthunho, string chuthichhinh, int luotxem, DateTime ngaydang, int manguoidung, int madanhmuc)
         {
             using (SqlConnection con = new SqlConnection(conStr))
             {
@@ -160,7 +162,7 @@ namespace WebService
                 //cmd.ExecuteNonQuery();
                 Models.BaiViet baiViet = new Models.BaiViet
                 {
-                    MaBaiViet = mabaiviet,  
+                    MaBaiViet = mabaiviet,
                     TieuDe = tieude,
                     TomTat = tomtat,
                     NoiDung = noidung,
@@ -214,14 +216,13 @@ namespace WebService
         // Cập nhật dữ liệu người dùng
 
         [WebMethod]
-
-        public bool CapNhatDuLieuNguoiDung(int manguoidung,string TenNguoiDung, string Email, string MatKhau, string HinhDaiDien, DateTime NgaySinh, string DiaChi, int SDT, byte GioiTinh, int VaiTro)
+        public bool CapNhatDuLieuNguoiDung(int manguoidung, string TenNguoiDung, string Email, string MatKhau, string HinhDaiDien, DateTime NgaySinh, string DiaChi, int SDT, byte GioiTinh, int VaiTro)
         {
             using (SqlConnection con = new SqlConnection(conStr))
             {
                 Models.NguoiDung Nguoidung = new Models.NguoiDung
                 {
-                    MaNguoiDung= manguoidung,
+                    MaNguoiDung = manguoidung,
                     TenNguoiDung = TenNguoiDung,
                     Email = Email,
                     MatKhau = MatKhau,
@@ -245,16 +246,16 @@ namespace WebService
         }
         // Thêm mới dữ liệu bình luận
         [WebMethod]
-        public bool ThemDuLieuBinhLuan( string noidung, DateTime ngaydang, int manguoidung, int mabaiviet)
+        public bool ThemDuLieuBinhLuan(string noidung, DateTime ngaydang, int manguoidung, int mabaiviet)
         {
             using (SqlConnection con = new SqlConnection(conStr))
             {
                 Models.BinhLuan binhluan = new Models.BinhLuan
                 {
-                   NoiDung = noidung,   
-                   NgayDang = ngaydang, 
-                   MaNguoiDung  = manguoidung,
-                   MaBaiViet = mabaiviet
+                    NoiDung = noidung,
+                    NgayDang = ngaydang,
+                    MaNguoiDung = manguoidung,
+                    MaBaiViet = mabaiviet
                 };
                 bool status = binhluan.ThemMoi();
                 if (status == true)
@@ -269,13 +270,13 @@ namespace WebService
         }
         // Cập nhật dữ liệu bình luận
         [WebMethod]
-        public bool CapnhatDuLieuBinhLuan(int mabinhluan,string noidung, int manguoidung, int mabaiviet)
+        public bool CapnhatDuLieuBinhLuan(int mabinhluan, string noidung, int manguoidung, int mabaiviet)
         {
             using (SqlConnection con = new SqlConnection(conStr))
             {
                 Models.BinhLuan binhluan = new Models.BinhLuan
                 {
-                    MaBinhLuan = mabinhluan,    
+                    MaBinhLuan = mabinhluan,
                     NoiDung = noidung,
                     NgayDang = Convert.ToDateTime(DateTime.Now.ToString("dd/MM/yyyy")),
                     MaNguoiDung = manguoidung,
@@ -293,6 +294,83 @@ namespace WebService
             }
         }
         // xóa dữ liệu theo bảng và điều kiện
+        [WebMethod]
+        public bool ThemDuLieuFileUpload(string tenfile, string chuthichfile)
+        {
+
+            Models.FileUpLoad fileUpLoad = new Models.FileUpLoad()
+            {
+                TenFile = tenfile,
+                ChuThichFile = chuthichfile
+            };
+            bool status = fileUpLoad.ThemMoi();
+            if (status == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        // File Upload
+        [WebMethod]
+        public void UploadFile(string fileName, string chuthichfile, string contentType, byte[] bytes)
+        {
+            string webRootPath = Server.MapPath("~");
+            string docPath = Path.GetFullPath(Path.Combine(webRootPath, "../ConsumingWebServiceASP.NET/Uploads/", fileName));
+            File.WriteAllBytes(docPath, bytes);
+            ThemDuLieuFileUpload(fileName, chuthichfile);
+        }
+
+        [WebMethod]
+        public string checkpath(string fileName, string rootPath)
+        {
+            //string filePath = Server.MapPath(string.Format(""));
+            //File.WriteAllBytes(filePath, bytes);
+            string webRootPath = Server.MapPath("~");
+            string docPath = Path.GetFullPath(Path.Combine(webRootPath, "../'"+rootPath+"'/Uploads/", fileName));
+            return docPath;
+        }
+        // Thêm vai trò
+        [WebMethod]
+        public bool ThemDuLieuVaiTro(string tenvaitro)
+        {
+
+            Models.VaiTro vaiTro = new Models.VaiTro()
+            {
+                TenVaiTro = tenvaitro,
+            };
+            bool status = vaiTro.ThemMoi();
+            if (status == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        // Thêm vai trò
+        [WebMethod]
+        public bool CapnhatDuLieuVaiTro(int mavaitro,string tenvaitro)
+        {
+
+            Models.VaiTro vaiTro = new Models.VaiTro()
+            {
+                MaVaiTro = mavaitro,    
+                TenVaiTro = tenvaitro,
+            };
+            bool status = vaiTro.CapNhat();
+            if (status == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         [WebMethod]
         public void XoaDuLieu(string tenbang, string dieukien)
         {
