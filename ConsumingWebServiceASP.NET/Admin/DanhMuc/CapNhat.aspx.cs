@@ -6,18 +6,24 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebService.Models;
-
+using System.Text.RegularExpressions;
 public partial class Admin_Default : System.Web.UI.Page
 {
     protected ServiceTinTuc.WebService1SoapClient ServiceTinTuc = new ServiceTinTuc.WebService1SoapClient();
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        var MaDanhMuc = Request.QueryString["MaDanhMuc"];
+        bool isNumber = IsNumeric(MaDanhMuc);
+
+        if (string.IsNullOrWhiteSpace(Request.QueryString["MaDanhMuc"]) || isNumber == false)
+        {
+            Response.Redirect("../404.aspx");
+        }
         if (!IsPostBack)
         {
             if (!String.IsNullOrEmpty(Request.QueryString["MaDanhMuc"]))
             {
-
-                var MaDanhMuc = Request.QueryString["MaDanhMuc"];
                 DataSet DanhMuc = ServiceTinTuc.LayDuLieu("danhmuc where MaDanhMuc = '" + MaDanhMuc + "' ");
                 int count = DanhMuc.Tables[0].Rows.Count;
                 if (count > 0)
@@ -26,16 +32,25 @@ public partial class Admin_Default : System.Web.UI.Page
                 }
                 else
                 {
-                    Session["UpdateStatus"] = "error";
-                    Response.Redirect("DanhSach.aspx");
+                    Response.Redirect("../404.aspx");
                 }
             }
         }
     }
+
+    private bool IsNumeric(string input)
+    {
+        bool isNumber = int.TryParse(input, out _);
+        return isNumber;
+    }
+
     protected void Submit_Click(object sender, EventArgs e)
     {
         var MaDanhMuc = Request.QueryString["MaDanhMuc"];
         var tendanhmuc = txtTenDanhMuc.Text.ToString();
+
+
+
         bool status = ServiceTinTuc.CapNhatDuLieuDanhMuc(Convert.ToInt32(MaDanhMuc), tendanhmuc);
         if (status == true)
         {
@@ -49,17 +64,17 @@ public partial class Admin_Default : System.Web.UI.Page
 
     protected void SubmitBack_Click(object sender, EventArgs e)
     {
-        var MaDanhMuc = Request.QueryString["MaDanhMuc"];
-        var tendanhmuc = txtTenDanhMuc.Text.ToString();
-        ServiceTinTuc.WebService1SoapClient ServiceTinTuc = new ServiceTinTuc.WebService1SoapClient();
-        bool status = ServiceTinTuc.CapNhatDuLieuDanhMuc(Convert.ToInt32(MaDanhMuc), tendanhmuc);
-        if (status == true)
-        {
-            Response.Redirect("DanhSach.aspx");
-        }
-        else
-        {
-            Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Cập nhật thất bại',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c '}) });</script>");
-        }
+        //    var MaDanhMuc = Request.QueryString["MaDanhMuc"];
+        //    var tendanhmuc = txtTenDanhMuc.Text.ToString();
+        //    ServiceTinTuc.WebService1SoapClient ServiceTinTuc = new ServiceTinTuc.WebService1SoapClient();
+        //    bool status = ServiceTinTuc.CapNhatDuLieuDanhMuc(Convert.ToInt32(MaDanhMuc), tendanhmuc);
+        //    if (status == true)
+        //    {
+        //        Response.Redirect("DanhSach.aspx");
+        //    }
+        //    else
+        //    {
+        //        Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Cập nhật thất bại',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c '}) });</script>");
+        //    }
     }
 }
