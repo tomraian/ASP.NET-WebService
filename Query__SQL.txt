@@ -26,3 +26,29 @@ begin
 	update BinhLuan set NoiDung = @Noidung,NgayDang= @ngaydang,MaNguoiDung= @manguoidung,
 	MaBaiViet = @mabaiviet where MaBinhLuan = @mabinhluan
 	end
+-------------------Thêm file upload------------------------
+CREATE PROCEDURE sp_InsertFileUpload @tenfile text,@chuthichfile ntext
+AS
+begin
+	insert into FileUpLoads values(@tenfile,@chuthichfile)
+	end
+-------------------cập nhật file upload------------------------
+CREATE PROCEDURE sp_updateFileUpload @mafile int ,@tenfile text,@chuthichfile ntext
+AS
+begin
+	update FileUpLoads set TenFile = @tenfile,ChuThichFile= @chuthichfile where MaFile = @mafile
+	end
+-------------------Thêm vai trò------------------------
+CREATE PROCEDURE sp_InsertVaiTro @tenvaitro nvarchar(255)
+AS
+begin
+	insert into VaiTro values(@tenvaitro)
+	end
+-------------------cập nhật vai trò------------------------
+CREATE PROCEDURE sp_InsertVaiTro @tenvaitro nvarchar(255)
+AS
+begin
+	insert into VaiTro values(@tenvaitro)
+	end
+
+

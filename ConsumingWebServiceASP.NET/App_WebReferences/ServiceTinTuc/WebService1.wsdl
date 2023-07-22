@@ -107,6 +107,129 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="ThemDuLieuNguoiDung">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenNguoiDung" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MatKhau" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HinhDaiDien" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="NgaySinh" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="DiaChi" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="SDT" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="GioiTinh" type="s:unsignedByte" />
+            <s:element minOccurs="1" maxOccurs="1" name="VaiTro" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ThemDuLieuNguoiDungResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ThemDuLieuNguoiDungResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CapNhatDuLieuNguoiDung">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="manguoidung" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="TenNguoiDung" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MatKhau" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HinhDaiDien" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="NgaySinh" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="DiaChi" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="SDT" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="GioiTinh" type="s:unsignedByte" />
+            <s:element minOccurs="1" maxOccurs="1" name="VaiTro" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CapNhatDuLieuNguoiDungResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CapNhatDuLieuNguoiDungResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ThemDuLieuBinhLuan">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="noidung" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ngaydang" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="manguoidung" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="mabaiviet" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ThemDuLieuBinhLuanResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ThemDuLieuBinhLuanResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CapnhatDuLieuBinhLuan">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="mabinhluan" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="noidung" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="manguoidung" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="mabaiviet" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CapnhatDuLieuBinhLuanResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CapnhatDuLieuBinhLuanResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ThemDuLieuFileUpload">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tenfile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="chuthichfile" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ThemDuLieuFileUploadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ThemDuLieuFileUploadResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="chuthichfile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contentType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="bytes" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadFileResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CapNhatDuLieuFileUpload">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="mafile" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="tenfile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="chuthichfile" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CapNhatDuLieuFileUploadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CapNhatDuLieuFileUploadResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="XoaDuLieu">
         <s:complexType>
           <s:sequence>
@@ -156,6 +279,48 @@
   <wsdl:message name="CapNhatDuLieuBaiVietSoapOut">
     <wsdl:part name="parameters" element="tns:CapNhatDuLieuBaiVietResponse" />
   </wsdl:message>
+  <wsdl:message name="ThemDuLieuNguoiDungSoapIn">
+    <wsdl:part name="parameters" element="tns:ThemDuLieuNguoiDung" />
+  </wsdl:message>
+  <wsdl:message name="ThemDuLieuNguoiDungSoapOut">
+    <wsdl:part name="parameters" element="tns:ThemDuLieuNguoiDungResponse" />
+  </wsdl:message>
+  <wsdl:message name="CapNhatDuLieuNguoiDungSoapIn">
+    <wsdl:part name="parameters" element="tns:CapNhatDuLieuNguoiDung" />
+  </wsdl:message>
+  <wsdl:message name="CapNhatDuLieuNguoiDungSoapOut">
+    <wsdl:part name="parameters" element="tns:CapNhatDuLieuNguoiDungResponse" />
+  </wsdl:message>
+  <wsdl:message name="ThemDuLieuBinhLuanSoapIn">
+    <wsdl:part name="parameters" element="tns:ThemDuLieuBinhLuan" />
+  </wsdl:message>
+  <wsdl:message name="ThemDuLieuBinhLuanSoapOut">
+    <wsdl:part name="parameters" element="tns:ThemDuLieuBinhLuanResponse" />
+  </wsdl:message>
+  <wsdl:message name="CapnhatDuLieuBinhLuanSoapIn">
+    <wsdl:part name="parameters" element="tns:CapnhatDuLieuBinhLuan" />
+  </wsdl:message>
+  <wsdl:message name="CapnhatDuLieuBinhLuanSoapOut">
+    <wsdl:part name="parameters" element="tns:CapnhatDuLieuBinhLuanResponse" />
+  </wsdl:message>
+  <wsdl:message name="ThemDuLieuFileUploadSoapIn">
+    <wsdl:part name="parameters" element="tns:ThemDuLieuFileUpload" />
+  </wsdl:message>
+  <wsdl:message name="ThemDuLieuFileUploadSoapOut">
+    <wsdl:part name="parameters" element="tns:ThemDuLieuFileUploadResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadFile" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="CapNhatDuLieuFileUploadSoapIn">
+    <wsdl:part name="parameters" element="tns:CapNhatDuLieuFileUpload" />
+  </wsdl:message>
+  <wsdl:message name="CapNhatDuLieuFileUploadSoapOut">
+    <wsdl:part name="parameters" element="tns:CapNhatDuLieuFileUploadResponse" />
+  </wsdl:message>
   <wsdl:message name="XoaDuLieuSoapIn">
     <wsdl:part name="parameters" element="tns:XoaDuLieu" />
   </wsdl:message>
@@ -186,6 +351,34 @@
     <wsdl:operation name="CapNhatDuLieuBaiViet">
       <wsdl:input message="tns:CapNhatDuLieuBaiVietSoapIn" />
       <wsdl:output message="tns:CapNhatDuLieuBaiVietSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ThemDuLieuNguoiDung">
+      <wsdl:input message="tns:ThemDuLieuNguoiDungSoapIn" />
+      <wsdl:output message="tns:ThemDuLieuNguoiDungSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CapNhatDuLieuNguoiDung">
+      <wsdl:input message="tns:CapNhatDuLieuNguoiDungSoapIn" />
+      <wsdl:output message="tns:CapNhatDuLieuNguoiDungSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ThemDuLieuBinhLuan">
+      <wsdl:input message="tns:ThemDuLieuBinhLuanSoapIn" />
+      <wsdl:output message="tns:ThemDuLieuBinhLuanSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CapnhatDuLieuBinhLuan">
+      <wsdl:input message="tns:CapnhatDuLieuBinhLuanSoapIn" />
+      <wsdl:output message="tns:CapnhatDuLieuBinhLuanSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ThemDuLieuFileUpload">
+      <wsdl:input message="tns:ThemDuLieuFileUploadSoapIn" />
+      <wsdl:output message="tns:ThemDuLieuFileUploadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <wsdl:input message="tns:UploadFileSoapIn" />
+      <wsdl:output message="tns:UploadFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CapNhatDuLieuFileUpload">
+      <wsdl:input message="tns:CapNhatDuLieuFileUploadSoapIn" />
+      <wsdl:output message="tns:CapNhatDuLieuFileUploadSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="XoaDuLieu">
       <wsdl:input message="tns:XoaDuLieuSoapIn" />
@@ -241,6 +434,69 @@
     </wsdl:operation>
     <wsdl:operation name="CapNhatDuLieuBaiViet">
       <soap:operation soapAction="http://tempuri.org/CapNhatDuLieuBaiViet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ThemDuLieuNguoiDung">
+      <soap:operation soapAction="http://tempuri.org/ThemDuLieuNguoiDung" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CapNhatDuLieuNguoiDung">
+      <soap:operation soapAction="http://tempuri.org/CapNhatDuLieuNguoiDung" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ThemDuLieuBinhLuan">
+      <soap:operation soapAction="http://tempuri.org/ThemDuLieuBinhLuan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CapnhatDuLieuBinhLuan">
+      <soap:operation soapAction="http://tempuri.org/CapnhatDuLieuBinhLuan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ThemDuLieuFileUpload">
+      <soap:operation soapAction="http://tempuri.org/ThemDuLieuFileUpload" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <soap:operation soapAction="http://tempuri.org/UploadFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CapNhatDuLieuFileUpload">
+      <soap:operation soapAction="http://tempuri.org/CapNhatDuLieuFileUpload" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -307,6 +563,69 @@
     </wsdl:operation>
     <wsdl:operation name="CapNhatDuLieuBaiViet">
       <soap12:operation soapAction="http://tempuri.org/CapNhatDuLieuBaiViet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ThemDuLieuNguoiDung">
+      <soap12:operation soapAction="http://tempuri.org/ThemDuLieuNguoiDung" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CapNhatDuLieuNguoiDung">
+      <soap12:operation soapAction="http://tempuri.org/CapNhatDuLieuNguoiDung" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ThemDuLieuBinhLuan">
+      <soap12:operation soapAction="http://tempuri.org/ThemDuLieuBinhLuan" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CapnhatDuLieuBinhLuan">
+      <soap12:operation soapAction="http://tempuri.org/CapnhatDuLieuBinhLuan" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ThemDuLieuFileUpload">
+      <soap12:operation soapAction="http://tempuri.org/ThemDuLieuFileUpload" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <soap12:operation soapAction="http://tempuri.org/UploadFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CapNhatDuLieuFileUpload">
+      <soap12:operation soapAction="http://tempuri.org/CapNhatDuLieuFileUpload" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
