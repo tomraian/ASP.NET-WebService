@@ -329,7 +329,7 @@ namespace WebService
             //string filePath = Server.MapPath(string.Format(""));
             //File.WriteAllBytes(filePath, bytes);
             string webRootPath = Server.MapPath("~");
-            string docPath = Path.GetFullPath(Path.Combine(webRootPath, "../'"+rootPath+"'/Uploads/", fileName));
+            string docPath = Path.GetFullPath(Path.Combine(webRootPath, "../'" + rootPath + "'/Uploads/", fileName));
             return docPath;
         }
         // Thêm vai trò
@@ -353,12 +353,12 @@ namespace WebService
         }
         // Thêm vai trò
         [WebMethod]
-        public bool CapnhatDuLieuVaiTro(int mavaitro,string tenvaitro)
+        public bool CapnhatDuLieuVaiTro(int mavaitro, string tenvaitro)
         {
 
             Models.VaiTro vaiTro = new Models.VaiTro()
             {
-                MaVaiTro = mavaitro,    
+                MaVaiTro = mavaitro,
                 TenVaiTro = tenvaitro,
             };
             bool status = vaiTro.CapNhat();
