@@ -30,7 +30,15 @@ public partial class Admin_Default : System.Web.UI.Page
         ServiceTinTuc.WebService1SoapClient ServiceTinTuc = new ServiceTinTuc.WebService1SoapClient();
         DanhSachDanhMuc.DataSource = ServiceTinTuc.LayDuLieu("danhmuc order by MaDanhMuc desc");
         DanhSachDanhMuc.DataBind();
-        DanhSachDanhMuc.UseAccessibleHeader = true;
-        DanhSachDanhMuc.HeaderRow.TableSection = TableRowSection.TableHeader;
+        if (DanhSachDanhMuc.Rows.Count < 1)
+        {
+            Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Chưa có dữ liệu',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c '}) });</script>");
+        }
+        else
+        {
+
+            DanhSachDanhMuc.UseAccessibleHeader = true;
+            DanhSachDanhMuc.HeaderRow.TableSection = TableRowSection.TableHeader;
+        }
     }
 }

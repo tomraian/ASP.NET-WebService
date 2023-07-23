@@ -92,9 +92,9 @@
                                 </a>
                                 <ul class="side-nav-second-level" aria-expanded="false">
                                     <li class="side-nav-item">
-                                        <a href="javascript: void(0);" aria-expanded="false">Danh sách
+                                        <a href="../BaiViet/DanhSach.aspx" aria-expanded="false">Danh sách
                                         </a>
-                                        <a href="javascript: void(0);" aria-expanded="false">Thêm mới
+                                        <a href="../BaiViet/ThemMoi.aspx" aria-expanded="false">Thêm mới
                                         </a>
                                     </li>
                                 </ul>

@@ -9,7 +9,6 @@ public partial class Admin_Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
     }
     protected void Submit_Click(object sender, EventArgs e)
     {
@@ -36,6 +35,19 @@ public partial class Admin_Default : System.Web.UI.Page
         else
         {
             Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Thêm thất bại',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c '}) });</script>");
+        }
+    }
+    private void ClearControls()
+    {
+        foreach (Control c in Page.Controls)
+        {
+            foreach (Control ctrl in c.Controls)
+            {
+                if (ctrl is TextBox)
+                {
+                    ((TextBox)ctrl).Text = string.Empty;
+                }
+            }
         }
     }
 }

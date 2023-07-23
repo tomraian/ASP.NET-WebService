@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-12">
             <asp:Label ID="debug" runat="server" Text=""></asp:Label>
-            <asp:GridView ID="DanhSachDanhMuc" runat="server" CssClass="table dt-responsive nowrap w-100" AutoGenerateColumns="False">
+            <asp:GridView ID="DanhSachDanhMuc" runat="server" CssClass="table dt-responsive nowrap w-100" AutoGenerateColumns="False" EmptyDataText="Chưa có dữ liệu">
                 <Columns>
 
                     <asp:BoundField DataField="MaDanhMuc" HeaderText="Ma danh mục" />
