@@ -214,19 +214,47 @@
       <s:element name="UploadFileResponse">
         <s:complexType />
       </s:element>
-      <s:element name="CapNhatDuLieuFileUpload">
+      <s:element name="checkpath">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="mafile" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="tenfile" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="chuthichfile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rootPath" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="CapNhatDuLieuFileUploadResponse">
+      <s:element name="checkpathResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="CapNhatDuLieuFileUploadResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="checkpathResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ThemDuLieuVaiTro">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tenvaitro" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ThemDuLieuVaiTroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ThemDuLieuVaiTroResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CapnhatDuLieuVaiTro">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="mavaitro" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="tenvaitro" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CapnhatDuLieuVaiTroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CapnhatDuLieuVaiTroResult" type="s:boolean" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -240,6 +268,40 @@
       </s:element>
       <s:element name="XoaDuLieuResponse">
         <s:complexType />
+      </s:element>
+      <s:element name="LayDanhSachBaiViet">
+        <s:complexType />
+      </s:element>
+      <s:element name="LayDanhSachBaiVietResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LayDanhSachBaiVietResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LayBaiVietMoiNhatTheoDanhMuc">
+        <s:complexType />
+      </s:element>
+      <s:element name="LayBaiVietMoiNhatTheoDanhMucResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LayBaiVietMoiNhatTheoDanhMucResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
       </s:element>
     </s:schema>
   </wsdl:types>
@@ -315,17 +377,41 @@
   <wsdl:message name="UploadFileSoapOut">
     <wsdl:part name="parameters" element="tns:UploadFileResponse" />
   </wsdl:message>
-  <wsdl:message name="CapNhatDuLieuFileUploadSoapIn">
-    <wsdl:part name="parameters" element="tns:CapNhatDuLieuFileUpload" />
+  <wsdl:message name="checkpathSoapIn">
+    <wsdl:part name="parameters" element="tns:checkpath" />
   </wsdl:message>
-  <wsdl:message name="CapNhatDuLieuFileUploadSoapOut">
-    <wsdl:part name="parameters" element="tns:CapNhatDuLieuFileUploadResponse" />
+  <wsdl:message name="checkpathSoapOut">
+    <wsdl:part name="parameters" element="tns:checkpathResponse" />
+  </wsdl:message>
+  <wsdl:message name="ThemDuLieuVaiTroSoapIn">
+    <wsdl:part name="parameters" element="tns:ThemDuLieuVaiTro" />
+  </wsdl:message>
+  <wsdl:message name="ThemDuLieuVaiTroSoapOut">
+    <wsdl:part name="parameters" element="tns:ThemDuLieuVaiTroResponse" />
+  </wsdl:message>
+  <wsdl:message name="CapnhatDuLieuVaiTroSoapIn">
+    <wsdl:part name="parameters" element="tns:CapnhatDuLieuVaiTro" />
+  </wsdl:message>
+  <wsdl:message name="CapnhatDuLieuVaiTroSoapOut">
+    <wsdl:part name="parameters" element="tns:CapnhatDuLieuVaiTroResponse" />
   </wsdl:message>
   <wsdl:message name="XoaDuLieuSoapIn">
     <wsdl:part name="parameters" element="tns:XoaDuLieu" />
   </wsdl:message>
   <wsdl:message name="XoaDuLieuSoapOut">
     <wsdl:part name="parameters" element="tns:XoaDuLieuResponse" />
+  </wsdl:message>
+  <wsdl:message name="LayDanhSachBaiVietSoapIn">
+    <wsdl:part name="parameters" element="tns:LayDanhSachBaiViet" />
+  </wsdl:message>
+  <wsdl:message name="LayDanhSachBaiVietSoapOut">
+    <wsdl:part name="parameters" element="tns:LayDanhSachBaiVietResponse" />
+  </wsdl:message>
+  <wsdl:message name="LayBaiVietMoiNhatTheoDanhMucSoapIn">
+    <wsdl:part name="parameters" element="tns:LayBaiVietMoiNhatTheoDanhMuc" />
+  </wsdl:message>
+  <wsdl:message name="LayBaiVietMoiNhatTheoDanhMucSoapOut">
+    <wsdl:part name="parameters" element="tns:LayBaiVietMoiNhatTheoDanhMucResponse" />
   </wsdl:message>
   <wsdl:portType name="WebService1Soap">
     <wsdl:operation name="checkSession">
@@ -376,13 +462,29 @@
       <wsdl:input message="tns:UploadFileSoapIn" />
       <wsdl:output message="tns:UploadFileSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="CapNhatDuLieuFileUpload">
-      <wsdl:input message="tns:CapNhatDuLieuFileUploadSoapIn" />
-      <wsdl:output message="tns:CapNhatDuLieuFileUploadSoapOut" />
+    <wsdl:operation name="checkpath">
+      <wsdl:input message="tns:checkpathSoapIn" />
+      <wsdl:output message="tns:checkpathSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ThemDuLieuVaiTro">
+      <wsdl:input message="tns:ThemDuLieuVaiTroSoapIn" />
+      <wsdl:output message="tns:ThemDuLieuVaiTroSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CapnhatDuLieuVaiTro">
+      <wsdl:input message="tns:CapnhatDuLieuVaiTroSoapIn" />
+      <wsdl:output message="tns:CapnhatDuLieuVaiTroSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="XoaDuLieu">
       <wsdl:input message="tns:XoaDuLieuSoapIn" />
       <wsdl:output message="tns:XoaDuLieuSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LayDanhSachBaiViet">
+      <wsdl:input message="tns:LayDanhSachBaiVietSoapIn" />
+      <wsdl:output message="tns:LayDanhSachBaiVietSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LayBaiVietMoiNhatTheoDanhMuc">
+      <wsdl:input message="tns:LayBaiVietMoiNhatTheoDanhMucSoapIn" />
+      <wsdl:output message="tns:LayBaiVietMoiNhatTheoDanhMucSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WebService1Soap" type="tns:WebService1Soap">
@@ -495,8 +597,26 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="CapNhatDuLieuFileUpload">
-      <soap:operation soapAction="http://tempuri.org/CapNhatDuLieuFileUpload" style="document" />
+    <wsdl:operation name="checkpath">
+      <soap:operation soapAction="http://tempuri.org/checkpath" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ThemDuLieuVaiTro">
+      <soap:operation soapAction="http://tempuri.org/ThemDuLieuVaiTro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CapnhatDuLieuVaiTro">
+      <soap:operation soapAction="http://tempuri.org/CapnhatDuLieuVaiTro" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -506,6 +626,24 @@
     </wsdl:operation>
     <wsdl:operation name="XoaDuLieu">
       <soap:operation soapAction="http://tempuri.org/XoaDuLieu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LayDanhSachBaiViet">
+      <soap:operation soapAction="http://tempuri.org/LayDanhSachBaiViet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LayBaiVietMoiNhatTheoDanhMuc">
+      <soap:operation soapAction="http://tempuri.org/LayBaiVietMoiNhatTheoDanhMuc" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -624,8 +762,26 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="CapNhatDuLieuFileUpload">
-      <soap12:operation soapAction="http://tempuri.org/CapNhatDuLieuFileUpload" style="document" />
+    <wsdl:operation name="checkpath">
+      <soap12:operation soapAction="http://tempuri.org/checkpath" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ThemDuLieuVaiTro">
+      <soap12:operation soapAction="http://tempuri.org/ThemDuLieuVaiTro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CapnhatDuLieuVaiTro">
+      <soap12:operation soapAction="http://tempuri.org/CapnhatDuLieuVaiTro" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -635,6 +791,24 @@
     </wsdl:operation>
     <wsdl:operation name="XoaDuLieu">
       <soap12:operation soapAction="http://tempuri.org/XoaDuLieu" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LayDanhSachBaiViet">
+      <soap12:operation soapAction="http://tempuri.org/LayDanhSachBaiViet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LayBaiVietMoiNhatTheoDanhMuc">
+      <soap12:operation soapAction="http://tempuri.org/LayBaiVietMoiNhatTheoDanhMuc" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
