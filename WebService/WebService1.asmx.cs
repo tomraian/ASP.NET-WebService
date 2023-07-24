@@ -11,7 +11,6 @@ using WebService.Models;
 using Microsoft.SqlServer.Server;
 using System.IO;
 using System.Diagnostics;
-using System.Web.UI.WebControls;
 
 namespace WebService
 {
@@ -31,13 +30,7 @@ namespace WebService
         {
             return HttpContext.Current.Session.SessionID;
         }
-        [WebMethod]
-        private bool IsNumeric(string input)
-        {
-            bool isNumber = int.TryParse(input, out _);
-            return isNumber;
-        }
-        string conStr = ConfigurationManager.ConnectionStrings["Models"].ConnectionString; // tạo kết nối tới sql bằng config
+        string conStr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString; // tạo kết nối tới sql bằng config
         // lấy dữ liệu theo bảng bằng tham số được truyền
         [WebMethod]
         public DataSet LayDuLieu(string table)
@@ -389,31 +382,6 @@ namespace WebService
                 cmd.Parameters.AddWithValue("@dieukien", dieukien);
                 con.Open();
                 cmd.ExecuteNonQuery();
-            }
-        }
-        [WebMethod]
-        public DataSet LayDanhSachBaiViet()
-        {
-            using (SqlConnection con = new SqlConnection(conStr))
-            {
-                SqlCommand cmd = new SqlCommand("select BaiViet.*,DanhMuc.TenDanhMuc from baiviet inner join DanhMuc on BaiViet.MaDanhMuc = DanhMuc.MaDanhMuc", con);
-                DataSet ds = new DataSet();
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(ds);
-                return ds;
-            }
-        }
-        [WebMethod]
-        public DataSet LayBaiVietMoiNhatTheoDanhMuc()
-        {
-            using (SqlConnection con = new SqlConnection(conStr))
-            {
-                string sql = "SELECT bv.*, dm.TenDanhMuc\r\nFROM BaiViet bv\r\nINNER JOIN (\r\n    SELECT MaDanhMuc, MAX(NgayDang) AS MaxNgayDang\r\n    FROM BaiViet\r\n    GROUP BY MaDanhMuc\r\n) latest ON bv.MaDanhMuc = latest.MaDanhMuc AND bv.NgayDang = latest.MaxNgayDang\r\nINNER JOIN DanhMuc dm ON bv.MaDanhMuc = dm.MaDanhMuc;";
-                SqlCommand cmd = new SqlCommand(sql, con);
-                DataSet ds = new DataSet();
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(ds);
-                return ds;
             }
         }
     }
