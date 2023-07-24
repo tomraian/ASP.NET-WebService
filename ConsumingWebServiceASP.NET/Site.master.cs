@@ -6,6 +6,9 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
 
 public partial class SiteMaster : MasterPage
 {
@@ -63,12 +66,15 @@ public partial class SiteMaster : MasterPage
             }
         }
     }
-
+        protected ServiceTinTuc.WebService1SoapClient ServiceTinTuc = new ServiceTinTuc.WebService1SoapClient();
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        Danhmuc.DataSource = ServiceTinTuc.LayDuLieu("DanhMuc");
+        Danhmuc.DataBind();
+        TinTuc.DataSource = ServiceTinTuc.LayBaiVietMoiNhatTheoDanhMuc();
+        TinTuc.DataBind();
+      
     }
-
     protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
     {
         Context.GetOwinContext().Authentication.SignOut();
