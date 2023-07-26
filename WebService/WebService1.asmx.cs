@@ -32,12 +32,12 @@ namespace WebService
             return HttpContext.Current.Session.SessionID;
         }
         [WebMethod]
-        private bool IsNumeric(string input)
+        public bool IsNumeric(string input)
         {
             bool isNumber = int.TryParse(input, out _);
             return isNumber;
         }
-        string conStr = ConfigurationManager.ConnectionStrings["Models"].ConnectionString; // tạo kết nối tới sql bằng config
+        string conStr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString; // tạo kết nối tới sql bằng config
         // lấy dữ liệu theo bảng bằng tham số được truyền
         [WebMethod]
         public DataSet LayDuLieu(string table)
