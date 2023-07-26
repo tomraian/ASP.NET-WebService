@@ -32,7 +32,7 @@ namespace WebService
             return HttpContext.Current.Session.SessionID;
         }
         [WebMethod]
-        public bool IsNumeric(string input)
+        private bool IsNumeric(string input)
         {
             bool isNumber = int.TryParse(input, out _);
             return isNumber;
@@ -408,12 +408,62 @@ namespace WebService
         {
             using (SqlConnection con = new SqlConnection(conStr))
             {
-                string sql = "SELECT bv.*, dm.TenDanhMuc\r\nFROM BaiViet bv\r\nINNER JOIN (\r\n    SELECT MaDanhMuc, MAX(NgayDang) AS MaxNgayDang\r\n    FROM BaiViet\r\n    GROUP BY MaDanhMuc\r\n) latest ON bv.MaDanhMuc = latest.MaDanhMuc AND bv.NgayDang = latest.MaxNgayDang\r\nINNER JOIN DanhMuc dm ON bv.MaDanhMuc = dm.MaDanhMuc;";
+                string sql = "SELECT bv.*, dm.TenDanhMuc\r\nFROM BaiViet bv\r\nINNER JOIN (\r\n    SELECT MaDanhMuc, MAX(NgayDang) AS MaxNgayDang\r\n    FROM BaiViet\r\n    GROUP BY MaDanhMuc\r\n) latest ON bv.MaDanhMuc = latest.MaDanhMuc AND bv.NgayDang = latest.MaxNgayDang\r\nINNER JOIN DanhMuc dm ON bv.MaDanhMuc = dm.MaDanhMuc";
                 SqlCommand cmd = new SqlCommand(sql, con);
                 DataSet ds = new DataSet();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(ds);
                 return ds;
+            }
+        }
+        [WebMethod]
+        public DataSet LayBaiVietLienQuan(int MaDanhMuc)
+        {
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                SqlCommand cmd = new SqlCommand("select top 5 BaiViet.*,DanhMuc.TenDanhMuc from baiviet inner join DanhMuc on BaiViet.MaDanhMuc = DanhMuc.MaDanhMuc where BaiViet.MaDanhMuc = '"+MaDanhMuc+"'", con);
+                DataSet ds = new DataSet();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(ds);
+                return ds;
+            }
+        }
+        [WebMethod]
+        public DataSet LayNhungBaiVietMoiNhat()
+        {
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                string query = "select top 5 BaiViet.*,DanhMuc.TenDanhMuc from baiviet inner join DanhMuc on BaiViet.MaDanhMuc = DanhMuc.MaDanhMuc ORDER BY NgayDang DESC\r\n";
+                SqlCommand cmd = new SqlCommand(query, con);
+                DataSet ds = new DataSet();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(ds);
+                return ds;
+            }
+        }
+        [WebMethod]
+        public DataSet LayBinhLuan(int manguoidung, int mabaiviet)
+        {
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                string query = "SELECT *\r\nFROM BinhLuan bl\r\nINNER JOIN (\r\n    SELECT MaNguoiDung, TenNguoiDung\r\n   FROM NguoiDung\r\n   GROUP BY Nguoidung.MaNguoiDung,Nguoidung.TenNguoiDung\r\n) nguoidung ON bl.MaNguoiDung = nguoidung.MaNguoiDung\r\nINNER JOIN(select mabaiviet from BaiViet group by MaBaiViet)mabaiviet on bl.MaBaiViet = mabaiviet.MaBaiViet\r\nwhere bl.MaBaiViet = '"+mabaiviet+"' and bl.MaNguoiDung = '"+manguoidung+"' ";
+                SqlCommand cmd = new SqlCommand(query, con);
+                DataSet ds = new DataSet();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(ds);
+                return ds;
+            }
+        }
+        [WebMethod]
+        public int Authencation(string Email, string MatKhau,int VaiTro)
+        {
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                con.Open();
+                string query = "SELECT count(*) FROM NguoiDung where Email = '"+ Email + "' and MatKhau = '"+ MatKhau + "' and VaiTro = '"+ VaiTro+"'";
+                SqlCommand cmd = new SqlCommand(query, con);
+                Int32 count = Convert.ToInt32(cmd.ExecuteScalar());
+                return count;
             }
         }
     }
