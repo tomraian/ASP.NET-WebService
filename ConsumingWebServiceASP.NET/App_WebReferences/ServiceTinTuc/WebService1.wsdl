@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+  xmlns:s="http://www.w3.org/2001/XMLSchema"
+  xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
+  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+  xmlns:tns="http://tempuri.org/"
+  xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/"
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
       <s:element name="checkSession">
@@ -9,20 +17,6 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="checkSessionResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="IsNumeric">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="input" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="IsNumericResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="IsNumericResult" type="s:boolean" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -317,6 +311,82 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="LayBaiVietLienQuan">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MaDanhMuc" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LayBaiVietLienQuanResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LayBaiVietLienQuanResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LayNhungBaiVietMoiNhat">
+        <s:complexType />
+      </s:element>
+      <s:element name="LayNhungBaiVietMoiNhatResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LayNhungBaiVietMoiNhatResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LayBinhLuan">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="manguoidung" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="mabaiviet" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LayBinhLuanResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LayBinhLuanResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Authencation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MatKhau" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="VaiTro" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthencationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AuthencationResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="checkSessionSoapIn">
@@ -324,12 +394,6 @@
   </wsdl:message>
   <wsdl:message name="checkSessionSoapOut">
     <wsdl:part name="parameters" element="tns:checkSessionResponse" />
-  </wsdl:message>
-  <wsdl:message name="IsNumericSoapIn">
-    <wsdl:part name="parameters" element="tns:IsNumeric" />
-  </wsdl:message>
-  <wsdl:message name="IsNumericSoapOut">
-    <wsdl:part name="parameters" element="tns:IsNumericResponse" />
   </wsdl:message>
   <wsdl:message name="LayDuLieuSoapIn">
     <wsdl:part name="parameters" element="tns:LayDuLieu" />
@@ -433,14 +497,34 @@
   <wsdl:message name="LayBaiVietMoiNhatTheoDanhMucSoapOut">
     <wsdl:part name="parameters" element="tns:LayBaiVietMoiNhatTheoDanhMucResponse" />
   </wsdl:message>
+  <wsdl:message name="LayBaiVietLienQuanSoapIn">
+    <wsdl:part name="parameters" element="tns:LayBaiVietLienQuan" />
+  </wsdl:message>
+  <wsdl:message name="LayBaiVietLienQuanSoapOut">
+    <wsdl:part name="parameters" element="tns:LayBaiVietLienQuanResponse" />
+  </wsdl:message>
+  <wsdl:message name="LayNhungBaiVietMoiNhatSoapIn">
+    <wsdl:part name="parameters" element="tns:LayNhungBaiVietMoiNhat" />
+  </wsdl:message>
+  <wsdl:message name="LayNhungBaiVietMoiNhatSoapOut">
+    <wsdl:part name="parameters" element="tns:LayNhungBaiVietMoiNhatResponse" />
+  </wsdl:message>
+  <wsdl:message name="LayBinhLuanSoapIn">
+    <wsdl:part name="parameters" element="tns:LayBinhLuan" />
+  </wsdl:message>
+  <wsdl:message name="LayBinhLuanSoapOut">
+    <wsdl:part name="parameters" element="tns:LayBinhLuanResponse" />
+  </wsdl:message>
+  <wsdl:message name="AuthencationSoapIn">
+    <wsdl:part name="parameters" element="tns:Authencation" />
+  </wsdl:message>
+  <wsdl:message name="AuthencationSoapOut">
+    <wsdl:part name="parameters" element="tns:AuthencationResponse" />
+  </wsdl:message>
   <wsdl:portType name="WebService1Soap">
     <wsdl:operation name="checkSession">
       <wsdl:input message="tns:checkSessionSoapIn" />
       <wsdl:output message="tns:checkSessionSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="IsNumeric">
-      <wsdl:input message="tns:IsNumericSoapIn" />
-      <wsdl:output message="tns:IsNumericSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="LayDuLieu">
       <wsdl:input message="tns:LayDuLieuSoapIn" />
@@ -510,20 +594,27 @@
       <wsdl:input message="tns:LayBaiVietMoiNhatTheoDanhMucSoapIn" />
       <wsdl:output message="tns:LayBaiVietMoiNhatTheoDanhMucSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="LayBaiVietLienQuan">
+      <wsdl:input message="tns:LayBaiVietLienQuanSoapIn" />
+      <wsdl:output message="tns:LayBaiVietLienQuanSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LayNhungBaiVietMoiNhat">
+      <wsdl:input message="tns:LayNhungBaiVietMoiNhatSoapIn" />
+      <wsdl:output message="tns:LayNhungBaiVietMoiNhatSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LayBinhLuan">
+      <wsdl:input message="tns:LayBinhLuanSoapIn" />
+      <wsdl:output message="tns:LayBinhLuanSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Authencation">
+      <wsdl:input message="tns:AuthencationSoapIn" />
+      <wsdl:output message="tns:AuthencationSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WebService1Soap" type="tns:WebService1Soap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="checkSession">
       <soap:operation soapAction="http://tempuri.org/checkSession" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="IsNumeric">
-      <soap:operation soapAction="http://tempuri.org/IsNumeric" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -684,20 +775,47 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="LayBaiVietLienQuan">
+      <soap:operation soapAction="http://tempuri.org/LayBaiVietLienQuan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LayNhungBaiVietMoiNhat">
+      <soap:operation soapAction="http://tempuri.org/LayNhungBaiVietMoiNhat" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LayBinhLuan">
+      <soap:operation soapAction="http://tempuri.org/LayBinhLuan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Authencation">
+      <soap:operation soapAction="http://tempuri.org/Authencation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="WebService1Soap12" type="tns:WebService1Soap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="checkSession">
       <soap12:operation soapAction="http://tempuri.org/checkSession" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="IsNumeric">
-      <soap12:operation soapAction="http://tempuri.org/IsNumeric" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -851,6 +969,42 @@
     </wsdl:operation>
     <wsdl:operation name="LayBaiVietMoiNhatTheoDanhMuc">
       <soap12:operation soapAction="http://tempuri.org/LayBaiVietMoiNhatTheoDanhMuc" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LayBaiVietLienQuan">
+      <soap12:operation soapAction="http://tempuri.org/LayBaiVietLienQuan" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LayNhungBaiVietMoiNhat">
+      <soap12:operation soapAction="http://tempuri.org/LayNhungBaiVietMoiNhat" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LayBinhLuan">
+      <soap12:operation soapAction="http://tempuri.org/LayBinhLuan" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Authencation">
+      <soap12:operation soapAction="http://tempuri.org/Authencation" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
