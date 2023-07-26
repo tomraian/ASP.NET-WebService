@@ -21,40 +21,39 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-               <asp:DataList ID="ChiTietNoiDung" runat="server">
-                <ItemTemplate>
-                     <h2><%# Eval("tieude") %>
-                        <%--tieude--%>
-                </h2>
-                <div class="detail-line-top d-flex justify-content-between">
-                   <div class="detail-article-date">
-                        <span> <%# Eval("ngaydang","{0:dd/M/yyyy H:mm:ss}") %></span>
-                
-                    </div>
-                    <div class="detail-share-top ">
-                        <div>   
-                            Lượt xem:  <%# Eval("luotxem") %>
+                <asp:DataList ID="ChiTietNoiDung" runat="server">
+                    <ItemTemplate>
+                        <h2><%# Eval("tieude") %>
+                            <%--tieude--%>
+                        </h2>
+                        <div class="detail-line-top d-flex justify-content-between">
+                            <div class="detail-article-date">
+                                <span><%# Eval("ngaydang","{0:dd/M/yyyy H:mm:ss}") %></span>
+                            </div>
+                            <div class="detail-share-top ">
+                                <div>
+                                    Lượt xem:  <%# Eval("luotxem") %>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                      <p class="font-20">
-                    <em>
-                        <%--tomtat--%>
-                           <%# Eval("tomtat") %></em>
-                </p>
-                <div class="content-news">
-                    <p
-                        style="margin: 0px 0px 10px; color: rgb(68, 68, 68); line-height: 26px; font-family: Arial; font-size: 16px; background-color: rgb(255, 255, 255); text-align: justify">
-                        <%# Eval("NoiDung") %>
-                    </p>
-                   
-                    <%--noidung--%>
-                </div>
-                </ItemTemplate>
-            </asp:DataList>
-               
-              
-                <div class="row mt-3">   
+                        <p class="font-20">
+                            <em>
+                                <%--tomtat--%>
+                                <%# Eval("tomtat") %></em>
+                        </p>
+                        <div class="content-news">
+                            <p
+                                style="margin: 0px 0px 10px; color: rgb(68, 68, 68); line-height: 26px; font-family: Arial; font-size: 16px; background-color: rgb(255, 255, 255); text-align: justify">
+                                <%# Eval("NoiDung") %>
+                            </p>
+
+                            <%--noidung--%>
+                        </div>
+                    </ItemTemplate>
+                </asp:DataList>
+
+
+                <div class="row mt-3">
                     <div class="col">
                         <h5 class="mb-2 font-16">Comments</h5>
 

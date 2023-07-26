@@ -12,10 +12,10 @@
             <asp:Label ID="debug" runat="server" Text=""></asp:Label>
             <asp:GridView ID="DanhSachBaiViet" runat="server" CssClass="table dt-responsive nowrap w-100" AutoGenerateColumns="False" EmptyDataText="Chưa có dữ liệu">
                 <Columns>
-                    <asp:HyperLinkField HeaderText="Mã Bài Viết" DataNavigateUrlFields="MaBaiViet" DataNavigateUrlFormatString="Sua.aspx?MaBaiViet={0}" DataTextField="MaBaiViet"></asp:HyperLinkField>
-                    <asp:HyperLinkField HeaderText="Tiêu Đề" DataNavigateUrlFields="TieuDe" DataNavigateUrlFormatString="Sua.aspx?MaBaiViet={0}" DataTextField="TieuDe"></asp:HyperLinkField>
-                    <asp:ImageField DataImageUrlField="HinhThuNho" DataImageUrlFormatString="../../Uploads/{0}" HeaderText="Hình Ảnh" ControlStyle-Width="200px">
-                        <ControlStyle Width="200px"></ControlStyle>
+                    <asp:HyperLinkField HeaderText="Mã Bài Viết" DataNavigateUrlFields="MaBaiViet" DataNavigateUrlFormatString="CapNhat.aspx?MaBaiViet={0}" DataTextField="MaBaiViet"></asp:HyperLinkField>
+                    <asp:HyperLinkField HeaderText="Tiêu Đề" DataNavigateUrlFields="MaBaiViet" DataNavigateUrlFormatString="CapNhat.aspx?MaBaiViet={0}" DataTextField="TieuDe"></asp:HyperLinkField>
+                    <asp:ImageField DataImageUrlField="HinhThuNho" DataImageUrlFormatString="../../Uploads/{0}" HeaderText="Hình Ảnh">
+                        <ControlStyle Width="100px"></ControlStyle>
                     </asp:ImageField>
                     <asp:HyperLinkField Text="Sửa" HeaderText="Sửa" DataNavigateUrlFields="MaBaiViet" DataNavigateUrlFormatString="CapNhat.aspx?MaBaiViet={0}">
 
