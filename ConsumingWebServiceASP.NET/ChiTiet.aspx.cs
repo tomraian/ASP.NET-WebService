@@ -14,5 +14,11 @@ public partial class ChiTiet : System.Web.UI.Page
         string Ma = Request.QueryString["Ma"];
         ChiTietNoiDung.DataSource = ServiceTinTuc.LayDuLieu("baiViet where MaBaiViet = '"+Ma+"'");
         ChiTietNoiDung.DataBind();
+        TinLienQuan.DataSource = ServiceTinTuc.LayBaiVietLienQuan(Convert.ToInt32(Ma.ToString()));
+        TinLienQuan.DataBind();
+        TinMoiNhat.DataSource = ServiceTinTuc.LayNhungBaiVietMoiNhat();
+        TinMoiNhat.DataBind();
+        NoiDungBinhLuan.DataSource = ServiceTinTuc.LayDuLieu("BinhLuan where mabaiviet = '"+Ma+"'");
+        NoiDungBinhLuan.DataBind();
     }
 }

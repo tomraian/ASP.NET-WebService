@@ -12,7 +12,7 @@ public partial class _Default : Page
     {
         NextNews.DataSource = ServiceTinTuc.LayDanhSachBaiViet();
         NextNews.DataBind();
-        carousel.DataSource = ServiceTinTuc.LayDuLieu("Baiviet ");
+        carousel.DataSource = ServiceTinTuc.LayDanhSachBaiViet();
         carousel.DataBind();
     }
 }
