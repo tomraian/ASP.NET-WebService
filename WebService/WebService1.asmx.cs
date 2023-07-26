@@ -32,7 +32,7 @@ namespace WebService
             return HttpContext.Current.Session.SessionID;
         }
         [WebMethod]
-        private bool IsNumeric(string input)
+        public bool IsNumeric(string input)
         {
             bool isNumber = int.TryParse(input, out _);
             return isNumber;
