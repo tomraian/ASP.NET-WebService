@@ -55,26 +55,27 @@
 
                 <div class="row mt-3">
                     <div class="col">
-                        <h5 class="mb-2 font-16">Comments</h5>
-
-                        <div class="media mt-3 p-1">
+                        <asp:DataList ID="NoiDungBinhLuan" runat="server">
+                            <ItemTemplate>
+                                  <h5 class="mb-2 font-16">Comments</h5>
+                         <div class="media mt-3 p-1">
                             <img src="assets/images/users/avatar-9.jpg" class="mr-2 rounded-circle" height="36"
                                 alt="Arya Stark">
                             <div class="media-body">
                                 <h5 class="mt-0 mb-0">
-                                    <span class="float-right text-muted font-12">4:30am</span>
+                                    <span class="float-right text-muted font-12"><%# Eval("ngaydang","{0:dd/M/yyyy H:mm:ss}") %></span>
                                     Arya Stark
                                 </h5>
                                 <p class="mt-1 mb-0 text-muted">
-                                    Should I review the last 3 years legal documents as well?
+                                    <%# Eval("noidung") %>
                                 </p>
                             </div>
                         </div>
-                        <!-- end comment -->
-
                         <hr>
-
-                        <div class="media mt-2 p-1">
+                            </ItemTemplate>
+                        </asp:DataList>
+                        <!-- end comment -->
+<%--                        <div class="media mt-2 p-1">
                             <img src="assets/images/users/avatar-5.jpg" class="mr-2 rounded-circle" height="36"
                                 alt="Dominc B">
                             <div class="media-body">
@@ -89,7 +90,7 @@
                         </div>
                         <!-- end comment-->
 
-                        <hr>
+                        <hr>--%>
                     </div>
                     <!-- end col -->
                 </div>
@@ -99,6 +100,7 @@
                             <form action="#" class="comment-area-box">
                                 <textarea rows="3" class="form-control border-0 resize-none"
                                     placeholder="Your comment..."></textarea>
+
                                 <div class="p-2 bg-light">
                                     <div class="float-right">
                                         <button type="submit" class="btn btn-sm btn-success">
@@ -120,83 +122,57 @@
                 <!-- tin liên quan  -->
                 <h4 class="header-title mt-3 font-weight-bolder font-24 font-italic badge badge-danger">Tin liên
                         quan</h4>
-                <div class="card mb-0 mt-2">
+                <asp:DataList ID="TinLienQuan" runat="server">
+                    <ItemTemplate>
+                        <div class="card mb-0 mt-2">
                     <div class="card-body">
                         <div class="media">
                             <a href="">
-                                <img src="assets/images/users/avatar-2.jpg" alt="image"
-                                    class="mr-3 d-none d-sm-block avatar"></a>
+                                <img src="Uploads/<%# Eval("hinhthunho") %>" alt="image"
+                                    class="mr-3 d-none d-sm-block avatar" width="250px"></a>
                             <div class="media-body">
-                                <a href="#" class="mb-1 mt-0 text-dark">Bị cục nóng điều hòa từ tầng 17 rơi
-                                        trúng đầu, nữ
-                                        sinh tử
-                                        vong</a>
+                                <a href="#" class="mb-1 mt-0 text-dark"><%# Eval("tieude") %></a>
                                 <div class="mt-2">
-                                    <a href="#">Thời sự</a> <span>- 2 Giờ trước</span>
+                                    <a href="#"><%# Eval("tendanhmuc") %></a> <span><%# Eval("ngaydang", "{0:dd/M/yyyy H:mm:ss}") %></span>
                                 </div>
                                 <div class="mb-0 mt-2 text-muted">
-                                    <span class="font-italic"><b>"</b>Một nữ sinh viên 21 tuổi ở
-                                            Đài Loan chết
-                                            oan uổng khi đang đứng chờ xe buýt do bị cục nóng điều hòa nặng 30kg từ
-                                            tầng 17 tòa nhà cạnh đó rơi trúng đầu.</span><b>"</b>
+                                    <span class="font-italic"><b>"</b><%# Eval("tomtat") %></span><b>"</b>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="card mb-0 mt-2">
-                    <div class="card-body">
-                        <div class="media">
-                            <a href="">
-                                <img src="assets/images/users/avatar-2.jpg" alt="image"
-                                    class="mr-3 d-none d-sm-block avatar"></a>
-                            <div class="media-body">
-                                <a href="#" class="mb-1 mt-0 text-dark">Bị cục nóng điều hòa từ tầng 17 rơi
-                                        trúng đầu, nữ
-                                        sinh tử
-                                        vong</a>
-                                <div class="mt-2">
-                                    <a href="#">Thời sự</a> <span>- 2 Giờ trước</span>
-                                </div>
-                                <div class="mb-0 mt-2 text-muted">
-                                    <span class="font-italic"><b>"</b>Một nữ sinh viên 21 tuổi ở
-                                            Đài Loan chết
-                                            oan uổng khi đang đứng chờ xe buýt do bị cục nóng điều hòa nặng 30kg từ
-                                            tầng 17 tòa nhà cạnh đó rơi trúng đầu.</span><b>"</b>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card mb-0 mt-2">
-                    <div class="card-body">
-                        <div class="media">
-                            <a href="">
-                                <img src="assets/images/users/avatar-2.jpg" alt="image"
-                                    class="mr-3 d-none d-sm-block avatar"></a>
-                            <div class="media-body">
-                                <a href="#" class="mb-1 mt-0 text-dark">Bị cục nóng điều hòa từ tầng 17 rơi
-                                        trúng đầu, nữ
-                                        sinh tử
-                                        vong</a>
-                                <div class="mt-2">
-                                    <a href="#">Thời sự</a> <span>- 2 Giờ trước</span>
-                                </div>
-                                <div class="mb-0 mt-2 text-muted">
-                                    <span class="font-italic"><b>"</b>Một nữ sinh viên 21 tuổi ở
-                                            Đài Loan chết
-                                            oan uổng khi đang đứng chờ xe buýt do bị cục nóng điều hòa nặng 30kg từ
-                                            tầng 17 tòa nhà cạnh đó rơi trúng đầu.</span><b>"</b>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    </ItemTemplate>
+                </asp:DataList>
                 <!-- Tin mới nhất -->
                 <h4 class="header-title mt-3 font-weight-bolder font-24 font-italic badge badge-primary">Tin mới
                         nhất
                 </h4>
-                <div class="card mb-0 mt-2">
+                <asp:DataList ID="TinMoiNhat" runat="server">
+                    <ItemTemplate>
+                        <div class="card mb-0 mt-2">
+                    <div class="card-body">
+                        <div class="media">
+                            <a href="">
+                                <img src="Uploads/<%# Eval("hinhthunho") %>" alt="image"
+                                    class="mr-3 d-none d-sm-block avatar" width="250px"></a>
+                            <div class="media-body">
+                                <a href="#" class="mb-1 mt-0 text-dark"><%# Eval("tieude") %></a>
+                                <div class="mt-2">
+                                    <a href="#"><%# Eval("tendanhmuc") %></a> <span><%# Eval("ngaydang", "{0:dd/M/yyyy H:mm:ss}") %></span>
+                                </div>
+                                <div class="mb-0 mt-2 text-muted">
+                                    <span class="font-italic"><b>"</b><%# Eval("tomtat") %></span><b>"</b>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    </ItemTemplate>
+                </asp:DataList>
+                
+                <%--<div class="card mb-0 mt-2">
                     <div class="card-body">
                         <div class="media">
                             <a href="">
@@ -219,8 +195,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="card mb-0 mt-2">
+                </div>--%>
+              <%--  <div class="card mb-0 mt-2">
                     <div class="card-body">
                         <div class="media">
                             <a href="">
@@ -243,31 +219,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="card mb-0 mt-2">
-                    <div class="card-body">
-                        <div class="media">
-                            <a href="">
-                                <img src="assets/images/users/avatar-2.jpg" alt="image"
-                                    class="mr-3 d-none d-sm-block avatar"></a>
-                            <div class="media-body">
-                                <a href="#" class="mb-1 mt-0 text-dark">Bị cục nóng điều hòa từ tầng 17 rơi
-                                        trúng đầu, nữ
-                                        sinh tử
-                                        vong</a>
-                                <div class="mt-2">
-                                    <a href="#">Thời sự</a> <span>- 2 Giờ trước</span>
-                                </div>
-                                <div class="mb-0 mt-2 text-muted">
-                                    <span class="font-italic"><b>"</b>Một nữ sinh viên 21 tuổi ở
-                                            Đài Loan chết
-                                            oan uổng khi đang đứng chờ xe buýt do bị cục nóng điều hòa nặng 30kg từ
-                                            tầng 17 tòa nhà cạnh đó rơi trúng đầu.</span><b>"</b>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </div>--%>
             </div>
         </div>
     </div>

@@ -25,7 +25,7 @@
                                             <%# Eval("tomtat") %>
                                         </p>
                                     </a>
-                                    <a href="#">Thời sự - 2 Giờ trước</a>
+                                    <a href="#"> <%# Eval("tendanhmuc") %> - <%#  Eval("ngaydang", "{0:dd/M/yyyy H:mm:ss}") %></a>
                                 </div>
                             </div>
                         </div> 
@@ -52,7 +52,7 @@
                         <div class="media">
                             <a href="/chitiet.aspx?Ma=<%# Eval("mabaiviet") %>">
                                 <img src="Uploads/<%# Eval("hinhthunho") %>" alt="image"
-                                    class="mr-3 d-none d-sm-block avatar"></a>
+                                    class="mr-3 d-none d-sm-block avatar" width="200px" ></a>
                             <div class="media-body">
                                 <a href="/chitiet.aspx?Ma=<%# Eval("mabaiviet") %>" class="mb-1 mt-0 text-dark"><%# Eval("tieude") %></a>
                                 <div class="mt-2">
