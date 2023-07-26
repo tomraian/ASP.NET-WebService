@@ -7,12 +7,18 @@ using System.Web.UI.WebControls;
 
 public partial class Admin_DanhMuc_Xoa : System.Web.UI.Page
 {
+    ServiceTinTuc.WebService1SoapClient ServiceTinTuc = new ServiceTinTuc.WebService1SoapClient();
     protected void Page_Load(object sender, EventArgs e)
     {
+        var MaDanhMuc = Request.QueryString["MaDanhMuc"];
+        bool isNumber = ServiceTinTuc.IsNumeric(MaDanhMuc);
+        if (string.IsNullOrWhiteSpace(Request.QueryString["MaDanhMuc"]) || isNumber == false)
+        {
+            Response.Redirect("../404.aspx");
+        }
+
         if (!String.IsNullOrEmpty(Request.QueryString["MaDanhMuc"]))
         {
-            ServiceTinTuc.WebService1SoapClient ServiceTinTuc = new ServiceTinTuc.WebService1SoapClient();
-            var MaDanhMuc = Request.QueryString["MaDanhMuc"];
             int count = ServiceTinTuc.LayDuLieu("danhmuc where MaDanhMuc = '" + MaDanhMuc + "' ").Tables[0].Rows.Count;
             if (count > 0)
             {
@@ -22,8 +28,7 @@ public partial class Admin_DanhMuc_Xoa : System.Web.UI.Page
             }
             else
             {
-                Session["DeleteStatus"] = "error";
-                Response.Redirect("DanhSach.aspx");
+                Response.Redirect("../404.aspx");
             }
         }
         else
