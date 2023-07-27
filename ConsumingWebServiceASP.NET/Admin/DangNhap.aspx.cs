@@ -34,30 +34,30 @@ public partial class DangNhap : System.Web.UI.Page
             string HinhDaiDien = NguoiDung.Tables[0].Rows[0]["HinhDaiDien"].ToString();
 
             HttpCookie Auth_Status = new HttpCookie("Auth_Status", "true");
-            HttpCookie Auth_type = new HttpCookie("Auth_type", "sa");
             HttpCookie Auth_Id = new HttpCookie("Auth_Id", MaNguoiDung);
             HttpCookie Auth_Name = new HttpCookie("Auth_Name", TenNguoiDung);
             HttpCookie Auth_Avatar = new HttpCookie("Auth_Avatar", HinhDaiDien);
+            HttpCookie Auth_Type = new HttpCookie("Auth_Type", "sa");
 
             Response.Cookies.Add(Auth_Status);
-            Response.Cookies.Add(Auth_type);
             Response.Cookies.Add(Auth_Id);
             Response.Cookies.Add(Auth_Name);
             Response.Cookies.Add(Auth_Avatar);
+            Response.Cookies.Add(Auth_Type);
 
 
             Auth_Status.Expires = DateTime.Now.AddMonths(3);
-            Auth_type.Expires = DateTime.Now.AddMonths(3);
             Auth_Id.Expires = DateTime.Now.AddMonths(3);
             Auth_Name.Expires = DateTime.Now.AddMonths(3);
             Auth_Avatar.Expires = DateTime.Now.AddMonths(3);
+            Auth_Type.Expires = DateTime.Now.AddMonths(3);
 
 
             Response.SetCookie(Auth_Status);
-            Response.SetCookie(Auth_type);
             Response.SetCookie(Auth_Id);
             Response.SetCookie(Auth_Name);
             Response.SetCookie(Auth_Avatar);
+            Response.SetCookie(Auth_Type);
 
             Response.Redirect("Default.aspx");
 

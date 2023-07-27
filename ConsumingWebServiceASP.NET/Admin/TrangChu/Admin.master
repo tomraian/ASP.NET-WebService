@@ -110,7 +110,7 @@
                                     <li class="side-nav-item">
                                         <a href="../BinhLuan/DanhSach.aspx" aria-expanded="false">Danh sách
                                         </a>
-                                       <%-- <a href="../BinhLuan/ThemMoi.aspx" aria-expanded="false">Danh sách
+                                        <%-- <a href="../BinhLuan/ThemMoi.aspx" aria-expanded="false">Danh sách
                                         </a>--%>
                                     </li>
                                 </ul>
@@ -350,8 +350,11 @@
                                                 class="rounded-circle">
                                         </span>
                                         <span>
-                                            <span class="account-user-name">Dominic Keller</span>
-                                            <span class="account-position">Founder</span>
+                                            <span class="account-user-name">
+                                                <asp:Label ID="Auth_Name" runat="server" />
+                                            </span>
+                                            <span class="account-position">
+                                                <asp:Label ID="Auth_Type" runat="server" /></span>
                                         </span>
                                     </a>
                                     <div
@@ -386,7 +389,7 @@
                                         </a>
 
                                         <!-- item-->
-                                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                        <a href="../DangXuat.aspx" class="dropdown-item notify-item">
                                             <i class="mdi mdi-logout mr-1"></i>
                                             <span>Logout</span>
                                         </a>

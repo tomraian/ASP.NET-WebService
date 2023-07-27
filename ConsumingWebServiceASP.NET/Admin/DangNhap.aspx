@@ -40,21 +40,22 @@
                             <div class="card-body p-4">
 
                                 <div class="text-center w-75 m-auto">
-                                    <h4 class="text-dark-50 text-center mt-0 font-weight-bold">Đăng nhập</h4>
+                                    <h4 class="text-dark-50 text-center mt-0 font-weight-bold">Sign In</h4>
                                     <p class="text-muted mb-4">
-                                        <%--Nhập email và mật khẩu để truy cập khu vực quản trị--%>
+                                        Enter your email address and password to access admin
+                                            panel.
                                     </p>
                                 </div>
                                 <div class="form-group">
                                     <label for="emailaddress">Email address</label>
-                                    <input class="form-control" type="email" id="emailaddress" value="Dinh@gmail.com"
+                                    <input class="form-control" type="email" id="emailaddress" value="admin@gmail.com"
                                         placeholder="Enter your email" runat="server">
                                 </div>
 
                                 <div class="form-group">
-                                    <%-- <a href="pages-recoverpw.html" class="text-muted float-right"><small>Forgot
+                                    <a href="pages-recoverpw.html" class="text-muted float-right"><small>Forgot
                                                 your
-                                                password?</small></a>--%>
+                                                password?</small></a>
                                     <label for="password">Password</label>
                                     <div class="input-group input-group-merge">
                                         <input type="text" value="123" id="password" class="form-control"
@@ -67,7 +68,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group mb-0 text-center">
-                                    <asp:Button class="btn btn-primary" runat="server" ID="BtnDangNhap" OnClick="BtnDangNhap_Click" Text="Đăng nhập"></asp:Button>
+                                    <asp:Button class="btn btn-primary" runat="server" ID="BtnDangNhap" OnClick="BtnDangNhap_Click" Text="Log In"></asp:Button>
                                     <%--                                        <asp:Button ID="Button1" runat="server" Text="Button" />--%>
                                 </div>
                             </div>
@@ -78,8 +79,8 @@
                         <div class="row mt-3">
                             <div class="col-12 text-center">
                                 <p class="text-muted">
-                                    Chưa có tài khoản? <a href="DangKy.aspx"
-                                        class="text-muted ml-1"><b>Đăng ký</b></a>
+                                    Don't have an account? <a href="pages-register.html"
+                                        class="text-muted ml-1"><b>Sign Up</b></a>
                                 </p>
                             </div>
                             <!-- end col -->
