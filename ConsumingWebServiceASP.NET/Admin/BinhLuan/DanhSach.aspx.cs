@@ -25,7 +25,8 @@ public partial class Admin_BinhLuan_DanhSach : System.Web.UI.Page
             Session.Remove("UpdateStatus");
         }
         ServiceTinTuc.WebService1SoapClient ServiceTinTuc = new ServiceTinTuc.WebService1SoapClient();
-        DanhSachBinhLuan.DataSource = ServiceTinTuc.LayDuLieu("BinhLuan order by MaBinhLuan desc");
+        DanhSachBinhLuan.DataSource = ServiceTinTuc.LoadBinhLuan();
+        
         DanhSachBinhLuan.DataBind();
         if (DanhSachBinhLuan.Rows.Count < 1)
         {

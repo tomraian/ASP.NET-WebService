@@ -393,6 +393,23 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="LoadBinhLuan">
+        <s:complexType />
+      </s:element>
+      <s:element name="LoadBinhLuanResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoadBinhLuanResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="checkSessionSoapIn">
@@ -533,6 +550,12 @@
   <wsdl:message name="AuthencationSoapOut">
     <wsdl:part name="parameters" element="tns:AuthencationResponse" />
   </wsdl:message>
+  <wsdl:message name="LoadBinhLuanSoapIn">
+    <wsdl:part name="parameters" element="tns:LoadBinhLuan" />
+  </wsdl:message>
+  <wsdl:message name="LoadBinhLuanSoapOut">
+    <wsdl:part name="parameters" element="tns:LoadBinhLuanResponse" />
+  </wsdl:message>
   <wsdl:portType name="WebService1Soap">
     <wsdl:operation name="checkSession">
       <wsdl:input message="tns:checkSessionSoapIn" />
@@ -625,6 +648,10 @@
     <wsdl:operation name="Authencation">
       <wsdl:input message="tns:AuthencationSoapIn" />
       <wsdl:output message="tns:AuthencationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadBinhLuan">
+      <wsdl:input message="tns:LoadBinhLuanSoapIn" />
+      <wsdl:output message="tns:LoadBinhLuanSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WebService1Soap" type="tns:WebService1Soap">
@@ -836,6 +863,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="LoadBinhLuan">
+      <soap:operation soapAction="http://tempuri.org/LoadBinhLuan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="WebService1Soap12" type="tns:WebService1Soap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -1039,6 +1075,15 @@
     </wsdl:operation>
     <wsdl:operation name="Authencation">
       <soap12:operation soapAction="http://tempuri.org/Authencation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadBinhLuan">
+      <soap12:operation soapAction="http://tempuri.org/LoadBinhLuan" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
