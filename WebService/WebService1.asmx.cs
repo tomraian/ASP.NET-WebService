@@ -446,7 +446,7 @@ namespace WebService
         {
             using (SqlConnection con = new SqlConnection(conStr))
             {
-                string query = "SELECT *\r\nFROM BinhLuan bl\r\nINNER JOIN (\r\n    SELECT MaNguoiDung, TenNguoiDung\r\n   FROM NguoiDung\r\n   GROUP BY Nguoidung.MaNguoiDung,Nguoidung.TenNguoiDung\r\n) nguoidung ON bl.MaNguoiDung = nguoidung.MaNguoiDung\r\nINNER JOIN(select mabaiviet from BaiViet group by MaBaiViet)mabaiviet on bl.MaBaiViet = mabaiviet.MaBaiViet\r\nwhere bl.MaBaiViet = '"+mabaiviet+"' and bl.MaNguoiDung = '"+manguoidung+"' ";
+                string query = "SELECT *\r\nFROM BinhLuan bl\r\nINNER JOIN (\r\n    SELECT MaNguoiDung, TenNguoiDung,HinhDaiDien\r\n   FROM NguoiDung\r\n   GROUP BY Nguoidung.MaNguoiDung,Nguoidung.TenNguoiDung,Nguoidung.HinhDaiDien\r\n) nguoidung ON bl.MaNguoiDung = nguoidung.MaNguoiDung\r\nINNER JOIN(select mabaiviet from BaiViet group by MaBaiViet)mabaiviet on bl.MaBaiViet = mabaiviet.MaBaiViet\r\nwhere bl.MaBaiViet = '" + mabaiviet+"' and bl.MaNguoiDung = '"+manguoidung+"' ";
                 SqlCommand cmd = new SqlCommand(query, con);
                 DataSet ds = new DataSet();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
