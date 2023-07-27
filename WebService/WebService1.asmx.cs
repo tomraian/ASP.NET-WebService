@@ -466,5 +466,19 @@ namespace WebService
                 return count;
             }
         }
+        [WebMethod]
+        public DataSet LoadBinhLuan()
+        {
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                con.Open();
+                string query = "select BinhLuan.*,NguoiDung.TenNguoiDung,BaiViet.TieuDe from BinhLuan inner join NguoiDung on BinhLuan.MaNguoiDung = NguoiDung.MaNguoiDung inner join BaiViet on BinhLuan.MaBaiViet = BaiViet.MaBaiViet";
+                SqlCommand cmd = new SqlCommand(query, con);
+                DataSet ds = new DataSet();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(ds);
+                return ds;
+            }
+        }
     }
 }
