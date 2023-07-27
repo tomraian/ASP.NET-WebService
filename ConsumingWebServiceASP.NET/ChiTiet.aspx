@@ -55,16 +55,16 @@
 
                 <div class="row mt-3">
                     <div class="col">
+                                  <h5 class="mb-2 font-16">Comments</h5>
                         <asp:DataList ID="NoiDungBinhLuan" runat="server">
                             <ItemTemplate>
-                                  <h5 class="mb-2 font-16">Comments</h5>
                          <div class="media mt-3 p-1">
-                            <img src="assets/images/users/avatar-9.jpg" class="mr-2 rounded-circle" height="36"
-                                alt="Arya Stark">
+                            <img src='Uploads/<%# Eval("hinhdaidien") %> ' class="mr-2 rounded-circle" height="36"
+                                alt='<%# Eval("tennguoidung") %>'>
                             <div class="media-body">
                                 <h5 class="mt-0 mb-0">
                                     <span class="float-right text-muted font-12"><%# Eval("ngaydang","{0:dd/M/yyyy H:mm:ss}") %></span>
-                                    Arya Stark
+                                    <%# Eval("tennguoidung") %>
                                 </h5>
                                 <p class="mt-1 mb-0 text-muted">
                                     <%# Eval("noidung") %>
@@ -97,15 +97,16 @@
                 <div class="row mt-2">
                     <div class="col">
                         <div class="border rounded">
-                            <form action="#" class="comment-area-box">
-                                <textarea rows="3" class="form-control border-0 resize-none"
-                                    placeholder="Your comment..."></textarea>
-
+                            <form  class="comment-area-box" runat="server">
+                               <%-- <textarea rows="3" class="form-control border-0 resize-none"
+                                    placeholder="Your comment..."></textarea>--%>
+                                <asp:TextBox runat="server" CssClass="form-control border-0 resize-none" ID="txtNoiDungBinhLuan" Font-Overline="False" TextMode="MultiLine" Height="100px" />  
                                 <div class="p-2 bg-light">
                                     <div class="float-right">
-                                        <button type="submit" class="btn btn-sm btn-success">
-                                            <i
-                                                class="uil uil-message mr-1"></i>Submit</button>
+                                       <%-- <button type="submit" class="btn btn-sm btn-success" runat="server" id="SubmitBinhLuan" OnClick="SubmitBinhLuan_Click">
+                                            </button>--%>
+                                        <%--<asp:Button ID="SubmitBinhLuan" runat="server" Text="Submit" CssClass="btn btn-sm btn-success"/>--%>
+                                        <asp:Button ID="SubmitBinhLuan" runat="server" Text="Button" CssClass="btn btn-sm btn-success" OnClick="SubmitBinhLuan_Click1" />
                                     </div>
                                     <div>
                                         <a href="#" class="btn btn-sm px-1 btn-light"><i
@@ -171,55 +172,6 @@
                 </div>
                     </ItemTemplate>
                 </asp:DataList>
-                
-                <%--<div class="card mb-0 mt-2">
-                    <div class="card-body">
-                        <div class="media">
-                            <a href="">
-                                <img src="assets/images/users/avatar-2.jpg" alt="image"
-                                    class="mr-3 d-none d-sm-block avatar"></a>
-                            <div class="media-body">
-                                <a href="#" class="mb-1 mt-0 text-dark">Bị cục nóng điều hòa từ tầng 17 rơi
-                                        trúng đầu, nữ
-                                        sinh tử
-                                        vong</a>
-                                <div class="mt-2">
-                                    <a href="#">Thời sự</a> <span>- 2 Giờ trước</span>
-                                </div>
-                                <div class="mb-0 mt-2 text-muted">
-                                    <span class="font-italic"><b>"</b>Một nữ sinh viên 21 tuổi ở
-                                            Đài Loan chết
-                                            oan uổng khi đang đứng chờ xe buýt do bị cục nóng điều hòa nặng 30kg từ
-                                            tầng 17 tòa nhà cạnh đó rơi trúng đầu.</span><b>"</b>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>--%>
-              <%--  <div class="card mb-0 mt-2">
-                    <div class="card-body">
-                        <div class="media">
-                            <a href="">
-                                <img src="assets/images/users/avatar-2.jpg" alt="image"
-                                    class="mr-3 d-none d-sm-block avatar"></a>
-                            <div class="media-body">
-                                <a href="#" class="mb-1 mt-0 text-dark">Bị cục nóng điều hòa từ tầng 17 rơi
-                                        trúng đầu, nữ
-                                        sinh tử
-                                        vong</a>
-                                <div class="mt-2">
-                                    <a href="#">Thời sự</a> <span>- 2 Giờ trước</span>
-                                </div>
-                                <div class="mb-0 mt-2 text-muted">
-                                    <span class="font-italic"><b>"</b>Một nữ sinh viên 21 tuổi ở
-                                            Đài Loan chết
-                                            oan uổng khi đang đứng chờ xe buýt do bị cục nóng điều hòa nặng 30kg từ
-                                            tầng 17 tòa nhà cạnh đó rơi trúng đầu.</span><b>"</b>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>--%>
             </div>
         </div>
     </div>

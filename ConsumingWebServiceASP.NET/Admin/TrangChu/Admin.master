@@ -108,8 +108,10 @@
                                 </a>
                                 <ul class="side-nav-second-level" aria-expanded="false">
                                     <li class="side-nav-item">
-                                        <a href="javascript: void(0);" aria-expanded="false">Danh sách
+                                        <a href="../BinhLuan/DanhSach.aspx" aria-expanded="false">Danh sách
                                         </a>
+                                       <%-- <a href="../BinhLuan/ThemMoi.aspx" aria-expanded="false">Danh sách
+                                        </a>--%>
                                     </li>
                                 </ul>
                             </li>
