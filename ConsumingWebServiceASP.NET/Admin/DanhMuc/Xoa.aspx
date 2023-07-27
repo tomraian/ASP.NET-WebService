@@ -1,16 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Xoa.aspx.cs" Inherits="Admin_DanhMuc_Xoa" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/TrangChu/Admin.master" AutoEventWireup="true" CodeFile="Xoa.aspx.cs" Inherits="Admin_DanhMuc_Xoa" %>
 
-<!DOCTYPE html>
+<asp:Content ID="Content1" ContentPlaceHolderID="cssContent" Runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="jsContent" Runat="Server">
+</asp:Content>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
-            <asp:Label ID="debug" runat="server" Text=""></asp:Label>
-        </div>
-    </form>
-</body>
-</html>
