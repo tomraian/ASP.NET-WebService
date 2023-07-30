@@ -73,7 +73,30 @@ public partial class SiteMaster : MasterPage
         Danhmuc.DataBind();
         TinTuc.DataSource = ServiceTinTuc.LayBaiVietMoiNhatTheoDanhMuc();
         TinTuc.DataBind();
-
+        if (Request.Cookies["Auth_Name"] != null)
+        {
+            Name.Text = Request.Cookies["Auth_Name"].Value;
+        }
+        if (Request.Cookies["Auth_Type"] != null && Request.Cookies["Auth_Type"].Value == "user")
+        {
+            Type.Text = "Người Dùng";
+        }
+        else
+        {
+            Type.Text = "Admin";
+        }
+        if (Request.Cookies["Auth_Avatar"] != null)
+        {
+            Avatar.ImageUrl = "Uploads/Avatar/" + Request.Cookies["Auth_Avatar"].Value + "";
+        }
+        if (Request.Cookies["Auth_Status"] != null && Request.Cookies["Auth_Status"].Value == "true")
+        {
+            GroupLogin.Visible = false;
+        }
+        else
+        {
+            GroupInfo.Visible = false;
+        }
     }
     protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
     {

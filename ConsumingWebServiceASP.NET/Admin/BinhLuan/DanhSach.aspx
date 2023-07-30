@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/TrangChu/Admin.master" AutoEventWireup="true" CodeFile="DanhSach.aspx.cs" Inherits="Admin_BinhLuan_DanhSach" %>
+﻿<%@ Page Title="Danh sách bình luận" Language="C#" MasterPageFile="~/Admin/TrangChu/Admin.master" AutoEventWireup="true" CodeFile="DanhSach.aspx.cs" Inherits="Admin_BinhLuan_DanhSach" %>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="jsContent" runat="Server">
     <!-- datatable  -->

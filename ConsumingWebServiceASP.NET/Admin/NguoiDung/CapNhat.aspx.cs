@@ -7,6 +7,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebService.Models;
 using System.Text.RegularExpressions;
+using System.Data.SqlTypes;
+
 public partial class Admin_Default : System.Web.UI.Page
 {
     protected ServiceTinTuc.WebService1SoapClient ServiceTinTuc = new ServiceTinTuc.WebService1SoapClient();
@@ -30,7 +32,7 @@ public partial class Admin_Default : System.Web.UI.Page
                     txtTenNguoiDung.Text = NguoiDung.Tables[0].Rows[0]["TenNguoiDung"].ToString();
                     Email.Text = NguoiDung.Tables[0].Rows[0]["Email"].ToString();
                     password.Text = NguoiDung.Tables[0].Rows[0]["MatKhau"].ToString();
-                    HinhAnh.Text =  NguoiDung.Tables[0].Rows[0]["HinhDaiDien"].ToString();
+                    HinhAnh.Text = NguoiDung.Tables[0].Rows[0]["HinhDaiDien"].ToString();
                     NgaySinh.Value = NguoiDung.Tables[0].Rows[0]["NgaySinh"].ToString();
                     DiaChi.Text = NguoiDung.Tables[0].Rows[0]["DiaChi"].ToString();
                     sodienthoai.Value = NguoiDung.Tables[0].Rows[0]["SDT"].ToString();
@@ -57,13 +59,13 @@ public partial class Admin_Default : System.Web.UI.Page
         var tennguoidung = txtTenNguoiDung.Text.ToString();
         var email = Email.Text.ToString();
         var pass = password.Text.ToString();
-        var hinhanh = HinhAnh.Text.ToString();
-        var ngaysinh = NgaySinh.Value.ToString();
-        var diachi = DiaChi.Text.ToString();
-        var sdt = sodienthoai.Value;
-        var gioitinh = GioiTinh.Value;
+        var hinhanh = "";
+        string ngaysinh;
+        var diachi = "";
+        var sdt = "";
+        var gioitinh = "";
         var vaitro = VaiTro.Text.ToString();
-        bool status = ServiceTinTuc.CapNhatDuLieuNguoiDung(Convert.ToInt32(MaNguoiDung), tennguoidung, email, pass, hinhanh,Convert.ToDateTime(ngaysinh),diachi,Convert.ToInt32(sdt),Convert.ToByte(gioitinh), Convert.ToInt32(vaitro));
+        bool status = ServiceTinTuc.CapNhatDuLieuNguoiDung(Convert.ToInt32(MaNguoiDung), tennguoidung, email, pass, hinhanh, DateTime.Now, diachi, Convert.ToInt32(sdt), Convert.ToByte(gioitinh), Convert.ToInt32(vaitro));
 
         if (status == true)
         {

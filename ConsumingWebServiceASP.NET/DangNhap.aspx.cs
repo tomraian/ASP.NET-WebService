@@ -13,7 +13,7 @@ public partial class DangNhap : System.Web.UI.Page
     protected ServiceTinTuc.WebService1SoapClient ServiceTinTuc = new ServiceTinTuc.WebService1SoapClient();
     protected void Page_Load(object sender, EventArgs e)
     {
-        emailaddress.Value = "Dinh@gmail.com";
+        //emailaddress.Value = "Dinh@gmail.com";
     }
     protected void BtnDangNhap_Click(object sender, EventArgs e)
     {
@@ -28,7 +28,7 @@ public partial class DangNhap : System.Web.UI.Page
             string HinhDaiDien = NguoiDung.Tables[0].Rows[0]["HinhDaiDien"].ToString();
 
             HttpCookie Auth_Status = new HttpCookie("Auth_Status", "true");
-            HttpCookie Auth_type = new HttpCookie("Auth_type", "user");
+            HttpCookie Auth_type = new HttpCookie("Auth_Type", "user");
             HttpCookie Auth_Id = new HttpCookie("Auth_Id", MaNguoiDung);
             HttpCookie Auth_Name = new HttpCookie("Auth_Name", TenNguoiDung);
             HttpCookie Auth_Avatar = new HttpCookie("Auth_Avatar", HinhDaiDien);

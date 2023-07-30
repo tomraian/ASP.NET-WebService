@@ -13,21 +13,18 @@ public partial class DangNhap : System.Web.UI.Page
     protected ServiceTinTuc.WebService1SoapClient ServiceTinTuc = new ServiceTinTuc.WebService1SoapClient();
     protected void Page_Load(object sender, EventArgs e)
     {
-        //HttpCookie cookie = new HttpCookie("Auth_ID");
-        //cookie.Value = "abc"; 
-        //cookie.Expires = DateTime.Now.AddHours(3);
-        //Response.SetCookie(cookie);
-       
+
     }
     protected void BtnDangKy_Click(object sender, EventArgs e)
     {
         string Username = username.Value;
         string email = emailaddress.Value;
         string pass = password.Value;
-        int count = ServiceTinTuc.LayDuLieu("Nguoidung where Email = '"+email+"'").Tables[0].Rows.Count;
-        if(count == 0)
+        DataSet NguoiDung = ServiceTinTuc.LayDuLieu("NguoiDung where Email = '" + email + "' ");
+        int count = NguoiDung.Tables[0].Rows.Count;
+        if (count == 0)
         {
-            bool status = ServiceTinTuc.DangKy(Username, email, pass,1);
+            bool status = ServiceTinTuc.DangKy(Username, email, pass, 1);
             if (status)
             {
                 Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Đăng ký thành công',position: 'top-right',loaderBg: '#004b36',bgColor:'#0ACF97'}) });</script>");

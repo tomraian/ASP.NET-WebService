@@ -20,16 +20,26 @@ public partial class Admin_BaiViet_Xoa : System.Web.UI.Page
         if (!String.IsNullOrEmpty(Request.QueryString["MaNguoiDung"]))
         {
             int count = ServiceTinTuc.LayDuLieu("NguoiDung where MaNguoiDung = '" + MaNguoiDung + "' ").Tables[0].Rows.Count;
-            if (count > 0)
+            int isAdmin = Convert.ToInt32(ServiceTinTuc.LayDuLieu("NguoiDung where MaNguoiDung = '" + MaNguoiDung + "' ").Tables[0].Rows[0]["VaiTro"]);
+            if (isAdmin != 1)
             {
-                ServiceTinTuc.XoaDuLieu("NguoiDung", "MaNguoiDung = '" + MaNguoiDung + "'");
-                Session["DeleteStatus"] = "ok";
                 Response.Redirect("DanhSach.aspx");
+                //Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Bạn không thể xóa tài khoản quản trị',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c '}) });</script>");
             }
             else
             {
-                Response.Redirect("../404.aspx");
+                if (count > 0)
+                {
+                    ServiceTinTuc.XoaDuLieu("NguoiDung", "MaNguoiDung = '" + MaNguoiDung + "'");
+                    Session["DeleteStatus"] = "ok";
+                    Response.Redirect("DanhSach.aspx");
+                }
+                else
+                {
+                    Response.Redirect("../404.aspx");
+                }
             }
+
         }
         else
         {

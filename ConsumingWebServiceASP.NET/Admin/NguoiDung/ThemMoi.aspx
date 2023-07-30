@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/TrangChu/Admin.master" AutoEventWireup="true" CodeFile="ThemMoi.aspx.cs" Inherits="Admin_NguoiDung_ThemMoi" %>
+﻿<%@ Page Title="Thêm mới người dùng" Language="C#" MasterPageFile="~/Admin/TrangChu/Admin.master" AutoEventWireup="true" CodeFile="ThemMoi.aspx.cs" Inherits="Admin_NguoiDung_ThemMoi" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cssContent" runat="Server">
 </asp:Content>
@@ -34,7 +34,8 @@
                                         <label for="simpleinput">
                                             Vai Trò
                                         </label>
-                                        <asp:TextBox ID="VaiTro" runat="server" class="form-control"></asp:TextBox>
+                                        <asp:DropDownList ID="VaiTro" runat="server" class="select2 form-control" data-toggle="select2"></asp:DropDownList>
+                                        <%--<asp:TextBox ID="VaiTro" runat="server" class="form-control"></asp:TextBox>--%>
                                     </div>
                                 </div>
                             </div>
