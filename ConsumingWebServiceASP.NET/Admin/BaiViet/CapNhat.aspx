@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Thêm bài viết" Language="C#" MasterPageFile="~/Admin/TrangChu/Admin.master" AutoEventWireup="true"
+﻿<%@ Page Title="Cập nhật bài viết" Language="C#" MasterPageFile="~/Admin/TrangChu/Admin.master" AutoEventWireup="true"
     CodeFile="CapNhat.aspx.cs" Inherits="Admin_Default" ValidateRequest="false" %>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="cssContent" runat="Server">

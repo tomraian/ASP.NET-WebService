@@ -421,7 +421,7 @@ namespace WebService
         {
             using (SqlConnection con = new SqlConnection(conStr))
             {
-                SqlCommand cmd = new SqlCommand("select top 5 BaiViet.*,DanhMuc.TenDanhMuc from baiviet inner join DanhMuc on BaiViet.MaDanhMuc = DanhMuc.MaDanhMuc where BaiViet.MaDanhMuc = '"+MaDanhMuc+"'", con);
+                SqlCommand cmd = new SqlCommand("select top 5 BaiViet.*,DanhMuc.TenDanhMuc from baiviet inner join DanhMuc on BaiViet.MaDanhMuc = DanhMuc.MaDanhMuc where BaiViet.MaDanhMuc = '" + MaDanhMuc + "'", con);
                 DataSet ds = new DataSet();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(ds);
@@ -433,7 +433,7 @@ namespace WebService
         {
             using (SqlConnection con = new SqlConnection(conStr))
             {
-                string query = "select top 5 BaiViet.*,DanhMuc.TenDanhMuc from baiviet inner join DanhMuc on BaiViet.MaDanhMuc = DanhMuc.MaDanhMuc ORDER BY NgayDang DESC\r\n";
+                string query = "select BaiViet.*,DanhMuc.TenDanhMuc from baiviet inner join DanhMuc on BaiViet.MaDanhMuc = DanhMuc.MaDanhMuc ORDER BY NgayDang DESC\r\n";
                 SqlCommand cmd = new SqlCommand(query, con);
                 DataSet ds = new DataSet();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -446,7 +446,7 @@ namespace WebService
         {
             using (SqlConnection con = new SqlConnection(conStr))
             {
-                string query = "select BinhLuan.*,NguoiDung.* from BinhLuan inner join NguoiDung on BinhLuan.MaNguoiDung = NguoiDung.MaNguoiDung where MaBaiViet = '"+ mabaiviet +"'";
+                string query = "select BinhLuan.*,NguoiDung.* from BinhLuan inner join NguoiDung on BinhLuan.MaNguoiDung = NguoiDung.MaNguoiDung where MaBaiViet = '" + mabaiviet + "'";
                 SqlCommand cmd = new SqlCommand(query, con);
                 DataSet ds = new DataSet();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -455,12 +455,12 @@ namespace WebService
             }
         }
         [WebMethod]
-        public int Authencation(string Email, string MatKhau,int VaiTro)
+        public int Authencation(string Email, string MatKhau, int VaiTro)
         {
             using (SqlConnection con = new SqlConnection(conStr))
             {
                 con.Open();
-                string query = "SELECT count(*) FROM NguoiDung where Email = '"+ Email + "' and MatKhau = '"+ MatKhau + "' and VaiTro = '"+ VaiTro+"'";
+                string query = "SELECT count(*) FROM NguoiDung where Email = '" + Email + "' and MatKhau = '" + MatKhau + "' and VaiTro = '" + VaiTro + "'";
                 SqlCommand cmd = new SqlCommand(query, con);
                 Int32 count = Convert.ToInt32(cmd.ExecuteScalar());
                 return count;
@@ -481,11 +481,11 @@ namespace WebService
             }
         }
         [WebMethod]
-        public bool DangKy(string UserName, string email,string pass,int vaitro)
+        public bool DangKy(string UserName, string email, string pass, int vaitro)
         {
             using (SqlConnection con = new SqlConnection(conStr))
             {
-                string query = "Insert Into NguoiDung(TenNguoiDung,Email,MatKhau,VaiTro) values('" + UserName+ "','"+email+"','"+pass+"','"+vaitro+"')";
+                string query = "Insert Into NguoiDung(TenNguoiDung,Email,MatKhau,HinhDaiDien,VaiTro) values('" + UserName + "','" + email + "','" + pass + "','NoAvatar.jpg','" + vaitro + "')";
                 SqlCommand cmd = new SqlCommand(query, con);
                 con.Open();
                 int count = cmd.ExecuteNonQuery();
@@ -498,6 +498,12 @@ namespace WebService
                     return false;
                 }
             }
+        }
+        [WebMethod]
+        public string test(string UserName, string email, string pass, int vaitro)
+        {
+            string query = "Insert Into NguoiDung(TenNguoiDung,Email,MatKhau,HinhDaiDien,VaiTro) values('" + UserName + "','" + email + "','" + pass + "','NoAvatar.jpg','" + vaitro + "')";
+            return query;
         }
         [WebMethod]
         public DataSet loadNguoiDung()
@@ -519,7 +525,7 @@ namespace WebService
             using (SqlConnection con = new SqlConnection(conStr))
             {
                 con.Open();
-                string query = "select * from BaiViet inner join DanhMuc on BaiViet.MaDanhMuc = DanhMuc.MaDanhMuc where BaiViet.MaDanhMuc = '"+Madanhmuc+"'";
+                string query = "select * from BaiViet inner join DanhMuc on BaiViet.MaDanhMuc = DanhMuc.MaDanhMuc where BaiViet.MaDanhMuc = '" + Madanhmuc + "'";
                 SqlCommand cmd = new SqlCommand(query, con);
                 DataSet ds = new DataSet();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);

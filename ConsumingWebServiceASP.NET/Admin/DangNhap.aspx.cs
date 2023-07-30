@@ -15,7 +15,7 @@ public partial class DangNhap : System.Web.UI.Page
     {
         emailaddress.Value = "admin@gmail.com";
 
-        if (Request.Cookies["Auth_Status"] != null && Request.Cookies["Auth_Status"].Value == "true")
+        if (Request.Cookies["Auth_Status"] != null && Request.Cookies["Auth_Status"].Value == "true" && Request.Cookies["Auth_Type"] == null)
         {
             Response.Redirect("/Admin");
         }

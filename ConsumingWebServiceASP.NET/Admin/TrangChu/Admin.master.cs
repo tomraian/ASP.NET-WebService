@@ -17,7 +17,7 @@ public partial class Admin_Admin : System.Web.UI.MasterPage
                 Auth_Type.Text = "Admin";
             }
         }
-        if (Request.Cookies["Auth_Status"] == null || Request.Cookies["Auth_Status"].Value != "true")
+        if (Request.Cookies["Auth_Status"] == null || Request.Cookies["Auth_Status"].Value != "true" || Request.Cookies["Auth_Type"].Value != "sa")
         {
 
             Response.Redirect("../DangNhap.aspx");

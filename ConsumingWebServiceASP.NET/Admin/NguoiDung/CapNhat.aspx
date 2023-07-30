@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Thêm mới danh mục" Language="C#" MasterPageFile="~/Admin/TrangChu/Admin.master" AutoEventWireup="true" CodeFile="CapNhat.aspx.cs" Inherits="Admin_Default" %>
+﻿<%@ Page Title="Cập nhật người dùng" Language="C#" MasterPageFile="~/Admin/TrangChu/Admin.master" AutoEventWireup="true" CodeFile="CapNhat.aspx.cs" Inherits="Admin_Default" %>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="cssContent" runat="Server">
 </asp:Content>
@@ -34,11 +34,11 @@
                                         <asp:TextBox ID="password" runat="server" class="form-control"></asp:TextBox>
                                     </div>
                                     <div class="form-group">
-                                  <label for="simpleinput">
+                                        <label for="simpleinput">
                                             Tên hình ảnh
                                         </label>
-                                        <asp:TextBox ID="HinhAnh" runat="server" class="form-control"  ReadOnly="true"></asp:TextBox>
-                                    
+                                        <asp:TextBox ID="HinhAnh" runat="server" class="form-control" ReadOnly="true"></asp:TextBox>
+
                                     </div>
 
                                     <div class="form-group mb-3">
@@ -47,27 +47,27 @@
                                             
                                         </label>
                                         <%--<asp:TextBox ID="ngaysinh" runat="server" class="form-control"></asp:TextBox>--%>
-                                        <input type="datetime" name="name" value="" runat="server" class="form-control" ID="NgaySinh"  ReadOnly="true"/>
+                                        <input type="datetime" name="name" runat="server" class="form-control" id="NgaySinh" readonly="true" />
                                     </div>
                                     <div class="form-group mb-3">
                                         <label for="simpleinput">
                                             Địa Chỉ  
                                         </label>
-                                        <asp:TextBox ID="DiaChi" runat="server" class="form-control"  ReadOnly="true"></asp:TextBox>
+                                        <asp:TextBox ID="DiaChi" runat="server" class="form-control" ReadOnly="true"></asp:TextBox>
                                     </div>
                                     <div class="form-group mb-3">
                                         <label for="simpleinput">
                                             Số Điện thoại   
                                             
                                         </label>
-                                        <input type="number" name="name" value="" runat="server" class="form-control" ID="sodienthoai"  ReadOnly="true"/>
+                                        <input type="number" name="name" value="" runat="server" class="form-control" id="sodienthoai" readonly="true" />
                                     </div>
                                     <div class="form-group mb-3">
                                         <label for="simpleinput">
                                             Giới Tính   
                                             
                                         </label>
-                                        <input type="number" name="name" value="" runat="server" class="form-control" ID="GioiTinh" ReadOnly="true"/>
+                                        <input type="number" name="name" value="" runat="server" class="form-control" id="GioiTinh" readonly="true" />
                                     </div>
                                     <div class="form-group mb-3">
                                         <label for="simpleinput">

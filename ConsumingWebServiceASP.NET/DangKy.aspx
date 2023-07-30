@@ -42,25 +42,21 @@
                                 <div class="text-center w-75 m-auto">
                                     <h4 class="text-dark-50 text-center mt-0 font-weight-bold">Sign In</h4>
                                     <p class="text-muted mb-4">
-                                        Enter your email address and password to access admin
-                                            panel.
+                                        Đăng ký người dùng để bình luận
                                     </p>
                                 </div>
                                 <div class="form-group">
-                                    <label for="UserName">User Name</label>
+                                    <label for="UserName">Tên hiển thị</label>
                                     <input class="form-control" type="text" id="username"
-                                        placeholder="Enter your name" runat="server" value="haha">
+                                        placeholder="Nhập tên hiển thị" runat="server">
                                 </div>
                                 <div class="form-group">
-                                    <label for="emailaddress">Email address</label>
-                                    <input class="form-control" type="email" id="emailaddress" value="Dinh@gmail.com"
-                                        placeholder="Enter your email" runat="server">
+                                    <label for="emailaddress">Email</label>
+                                    <input class="form-control" type="email" id="emailaddress"
+                                        placeholder="Nhập email để đăng ký" runat="server">
                                 </div>
                                 <div class="form-group">
-                                    <a href="pages-recoverpw.html" class="text-muted float-right"><small>Forgot
-                                                your
-                                                password?</small></a>
-                                    <label for="password">Password</label>
+                                    <label for="password">Mật khẩu</label>
                                     <div class="input-group input-group-merge">
                                         <input type="text" value="123" id="password" class="form-control"
                                             placeholder="Enter your password" runat="server">

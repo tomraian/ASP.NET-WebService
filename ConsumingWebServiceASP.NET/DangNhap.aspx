@@ -22,7 +22,7 @@
 <body class=" authentication-bg"
     data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
     <asp:Label Text="" ID="Debug" runat="server" />
-    <form action="" id="id" runat="server">
+    <form action="#" id="id" runat="server">
         <div class="account-pages mt-5 mb-5">
             <div class="container">
                 <div class="row justify-content-center">
@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="emailaddress">Email address</label>
-                                    <input class="form-control" type="email" id="emailaddress" value="Dinh@gmail.com"
+                                    <input class="form-control" type="email" id="emailaddress" value="duy@gmail.com"
                                         placeholder="Enter your email" runat="server">
                                 </div>
 

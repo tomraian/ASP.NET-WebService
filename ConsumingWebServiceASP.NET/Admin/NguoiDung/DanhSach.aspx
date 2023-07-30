@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/TrangChu/Admin.master" AutoEventWireup="true" CodeFile="DanhSach.aspx.cs" Inherits="Admin_NguoiDung_DanhSach" %>
+﻿<%@ Page Title="Danh sách người dùng" Language="C#" MasterPageFile="~/Admin/TrangChu/Admin.master" AutoEventWireup="true" CodeFile="DanhSach.aspx.cs" Inherits="Admin_NguoiDung_DanhSach" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cssContent" runat="Server">
     <!-- datatable  -->
@@ -14,7 +14,7 @@
                     <asp:BoundField DataField="TenNguoiDung" HeaderText="Tên người dùng" />
                     <asp:BoundField DataField="Email" HeaderText="email" />
                     <asp:BoundField DataField="MatKhau" HeaderText="mật khẩu" />
-                    <asp:ImageField DataImageUrlField="HinhDaiDien" DataImageUrlFormatString="../../Uploads/{0}" HeaderText="Hình Ảnh">
+                    <asp:ImageField DataImageUrlField="HinhDaiDien" DataImageUrlFormatString="../../Uploads/Avatar/{0}" HeaderText="Hình Ảnh">
                         <ControlStyle Width="100px"></ControlStyle>
                     </asp:ImageField>
                     <asp:BoundField DataField="NgaySinh" HeaderText="Ngày Sinh" />
@@ -49,7 +49,7 @@
     <script src="../../assets/js/pages/demo.datatable-init.js"></script>
     <script>
         $(function () {
-            $("[id*=DanhSachDanhMuc]").DataTable(
+            $("[id*=DanhSachNguoiDung]").DataTable(
                 {
                     bLengthChange: true,
                     lengthMenu: [[5, 10, -1], [5, 10, "All"]],
