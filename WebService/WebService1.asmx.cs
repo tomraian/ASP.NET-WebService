@@ -481,11 +481,11 @@ namespace WebService
             }
         }
         [WebMethod]
-        public bool DangKy(string UserName, string email,string pass)
+        public bool DangKy(string UserName, string email,string pass,int vaitro)
         {
             using (SqlConnection con = new SqlConnection(conStr))
             {
-                string query = "Insert Into NguoiDung(TenNguoiDung,Email,MatKhau,VaiTro) values('" + UserName+ "','"+email+"','"+pass+"',1)";
+                string query = "Insert Into NguoiDung(TenNguoiDung,Email,MatKhau,VaiTro) values('" + UserName+ "','"+email+"','"+pass+"','"+vaitro+"')";
                 SqlCommand cmd = new SqlCommand(query, con);
                 con.Open();
                 int count = cmd.ExecuteNonQuery();
@@ -506,6 +506,20 @@ namespace WebService
             {
                 con.Open();
                 string query = "select *,VaiTro.TenVaiTro from NguoiDung inner join VaiTro on NguoiDung.VaiTro = VaiTro.MaVaiTro";
+                SqlCommand cmd = new SqlCommand(query, con);
+                DataSet ds = new DataSet();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(ds);
+                return ds;
+            }
+        }
+        [WebMethod]
+        public DataSet LoadDanhMuc(int Madanhmuc)
+        {
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                con.Open();
+                string query = "select * from BaiViet inner join DanhMuc on BaiViet.MaDanhMuc = DanhMuc.MaDanhMuc where BaiViet.MaDanhMuc = '"+Madanhmuc+"'";
                 SqlCommand cmd = new SqlCommand(query, con);
                 DataSet ds = new DataSet();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);

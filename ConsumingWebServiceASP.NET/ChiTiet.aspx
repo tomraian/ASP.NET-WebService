@@ -128,7 +128,7 @@
                         <div class="card mb-0 mt-2">
                     <div class="card-body">
                         <div class="media">
-                            <a href="">
+                            <a href="./chitiet.aspx?Ma=<%# Eval("MaBaiViet") %>">
                                 <img src="Uploads/<%# Eval("hinhthunho") %>" alt="image"
                                     class="mr-3 d-none d-sm-block avatar" width="250px"></a>
                             <div class="media-body">
@@ -154,7 +154,7 @@
                         <div class="card mb-0 mt-2">
                     <div class="card-body">
                         <div class="media">
-                            <a href="">
+                            <a href="./chitiet.aspx?Ma=<%# Eval("MaBaiViet") %>">
                                 <img src="Uploads/<%# Eval("hinhthunho") %>" alt="image"
                                     class="mr-3 d-none d-sm-block avatar" width="250px"></a>
                             <div class="media-body">

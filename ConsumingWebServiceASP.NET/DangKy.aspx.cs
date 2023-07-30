@@ -27,7 +27,7 @@ public partial class DangNhap : System.Web.UI.Page
         int count = ServiceTinTuc.LayDuLieu("Nguoidung where Email = '"+email+"'").Tables[0].Rows.Count;
         if(count == 0)
         {
-            bool status = ServiceTinTuc.DangKy(Username, email, pass);
+            bool status = ServiceTinTuc.DangKy(Username, email, pass,1);
             if (status)
             {
                 Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Đăng ký thành công',position: 'top-right',loaderBg: '#004b36',bgColor:'#0ACF97'}) });</script>");

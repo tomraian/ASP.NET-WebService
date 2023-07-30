@@ -118,7 +118,7 @@
 
                             <li class="side-nav-title side-nav-item">Công cụ quản trị người dùng</li>
 
-                            <li class="side-nav-item">
+                           <%-- <li class="side-nav-item">
                                 <a href="javascript: void(0);" class="side-nav-link">
                                     <i class="uil-folder-plus"></i>
                                     <span>Quản lý Vai Trò</span>
@@ -132,7 +132,7 @@
                                         </a>
                                     </li>
                                 </ul>
-                            </li>
+                            </li>--%>
 
                             <li class="side-nav-item">
                                 <a href="javascript: void(0);" class="side-nav-link">
@@ -142,7 +142,7 @@
                                 </a>
                                 <ul class="side-nav-second-level" aria-expanded="false">
                                     <li class="side-nav-item">
-                                        <a href="javascript: void(0);" aria-expanded="false">Danh sách
+                                        <a href="../NguoiDung/DanhSach.aspx" aria-expanded="false">Danh sách
                                         </a>
                                         <a href="javascript: void(0);" aria-expanded="false">Thêm mới
                                         </a>

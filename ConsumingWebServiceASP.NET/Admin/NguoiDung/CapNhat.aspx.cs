@@ -30,7 +30,7 @@ public partial class Admin_Default : System.Web.UI.Page
                     txtTenNguoiDung.Text = NguoiDung.Tables[0].Rows[0]["TenNguoiDung"].ToString();
                     Email.Text = NguoiDung.Tables[0].Rows[0]["Email"].ToString();
                     password.Text = NguoiDung.Tables[0].Rows[0]["MatKhau"].ToString();
-                    HinhAnh.ImageUrl = "../../Uploads/" + NguoiDung.Tables[0].Rows[0]["HinhDaiDien"].ToString();
+                    HinhAnh.Text =  NguoiDung.Tables[0].Rows[0]["HinhDaiDien"].ToString();
                     NgaySinh.Value = NguoiDung.Tables[0].Rows[0]["NgaySinh"].ToString();
                     DiaChi.Text = NguoiDung.Tables[0].Rows[0]["DiaChi"].ToString();
                     sodienthoai.Value = NguoiDung.Tables[0].Rows[0]["SDT"].ToString();
@@ -57,7 +57,7 @@ public partial class Admin_Default : System.Web.UI.Page
         var tennguoidung = txtTenNguoiDung.Text.ToString();
         var email = Email.Text.ToString();
         var pass = password.Text.ToString();
-        var hinhanh = HinhAnh.ImageUrl.ToString();
+        var hinhanh = HinhAnh.Text.ToString();
         var ngaysinh = NgaySinh.Value.ToString();
         var diachi = DiaChi.Text.ToString();
         var sdt = sodienthoai.Value;
@@ -81,7 +81,7 @@ public partial class Admin_Default : System.Web.UI.Page
         var tennguoidung = txtTenNguoiDung.Text.ToString();
         var email = Email.Text.ToString();
         var pass = password.Text.ToString();
-        var hinhanh = HinhAnh.ImageUrl.ToString();
+        var hinhanh = HinhAnh.Text.ToString();
         var ngaysinh = NgaySinh.Value.ToString();
         var diachi = DiaChi.Text.ToString();
         var sdt = sodienthoai.Value;

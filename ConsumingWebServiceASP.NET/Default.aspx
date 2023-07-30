@@ -24,7 +24,7 @@
                                             <%# Eval("tomtat") %>
                                         </p>
                                     </a>
-                                    <a href="#"> <%# Eval("tendanhmuc") %> - <%#  Eval("ngaydang", "{0:dd/M/yyyy H:mm:ss}") %></a>
+                                    <a href="./Danhmuc.aspx?Ma=<%# Eval("mabaiviet") %>"> <%# Eval("tendanhmuc") %> - <%#  Eval("ngaydang", "{0:dd/M/yyyy H:mm:ss}") %></a>
                                 </div>
                             </div>
                         </div> 
@@ -55,7 +55,7 @@
                             <div class="media-body">
                                 <a href="/chitiet.aspx?Ma=<%# Eval("mabaiviet") %>" class="mb-1 mt-0 text-dark"><%# Eval("tieude") %></a>
                                 <div class="mt-2">
-                                    <a href="#"><%# Eval("tendanhmuc") %></a>-<span><%# Eval("ngaydang", "{0:dd/M/yyyy H:mm:ss}") %></span>
+                                    <a href="./Danhmuc.aspx?Ma=<%# Eval("mabaiviet") %>"><%# Eval("tendanhmuc") %></a>-<span><%# Eval("ngaydang", "{0:dd/M/yyyy H:mm:ss}") %></span>
                                 </div>
                                 <div class="mb-0 mt-2 text-muted">
                                     <span class="font-italic"><b>"</b><%# Eval("tomtat") %></span><b>"</b>

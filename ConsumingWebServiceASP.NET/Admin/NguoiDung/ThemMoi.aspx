@@ -1,9 +1,8 @@
-﻿<%@ Page Title="Thêm mới danh mục" Language="C#" MasterPageFile="~/Admin/TrangChu/Admin.master" AutoEventWireup="true" CodeFile="CapNhat.aspx.cs" Inherits="Admin_Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/TrangChu/Admin.master" AutoEventWireup="true" CodeFile="ThemMoi.aspx.cs" Inherits="Admin_NguoiDung_ThemMoi" %>
 
-<asp:Content ID="Content3" ContentPlaceHolderID="cssContent" runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="cssContent" runat="Server">
 </asp:Content>
-
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <div class="row">
         <div class="col-12">
             <asp:Label ID="debug" runat="server" Text=""></asp:Label>
@@ -22,52 +21,14 @@
                                     <div class="form-group mb-3">
                                         <label for="simpleinput">
                                             Email
-                                            
                                         </label>
-                                        <asp:TextBox ID="Email" runat="server" class="form-control" ReadOnly="true"></asp:TextBox>
+                                        <asp:TextBox ID="Email" runat="server" class="form-control"></asp:TextBox>
                                     </div>
                                     <div class="form-group mb-3">
                                         <label for="simpleinput">
                                             Mật khẩu   
-                                            
                                         </label>
                                         <asp:TextBox ID="password" runat="server" class="form-control"></asp:TextBox>
-                                    </div>
-                                    <div class="form-group">
-                                  <label for="simpleinput">
-                                            Tên hình ảnh
-                                        </label>
-                                        <asp:TextBox ID="HinhAnh" runat="server" class="form-control"  ReadOnly="true"></asp:TextBox>
-                                    
-                                    </div>
-
-                                    <div class="form-group mb-3">
-                                        <label for="simpleinput">
-                                            Ngày Sinh 
-                                            
-                                        </label>
-                                        <%--<asp:TextBox ID="ngaysinh" runat="server" class="form-control"></asp:TextBox>--%>
-                                        <input type="datetime" name="name" value="" runat="server" class="form-control" ID="NgaySinh"  ReadOnly="true"/>
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label for="simpleinput">
-                                            Địa Chỉ  
-                                        </label>
-                                        <asp:TextBox ID="DiaChi" runat="server" class="form-control"  ReadOnly="true"></asp:TextBox>
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label for="simpleinput">
-                                            Số Điện thoại   
-                                            
-                                        </label>
-                                        <input type="number" name="name" value="" runat="server" class="form-control" ID="sodienthoai"  ReadOnly="true"/>
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label for="simpleinput">
-                                            Giới Tính   
-                                            
-                                        </label>
-                                        <input type="number" name="name" value="" runat="server" class="form-control" ID="GioiTinh" ReadOnly="true"/>
                                     </div>
                                     <div class="form-group mb-3">
                                         <label for="simpleinput">
@@ -141,8 +102,8 @@
         </div>
     </div>
 </asp:Content>
-
-<asp:Content ID="Content2" ContentPlaceHolderID="jsContent" runat="Server">
+<asp:Content ID="Content3" ContentPlaceHolderID="jsContent" runat="Server">
     <script src="../../assets/js/pages/demo.datatable-init.js"></script>
 
 </asp:Content>
+
