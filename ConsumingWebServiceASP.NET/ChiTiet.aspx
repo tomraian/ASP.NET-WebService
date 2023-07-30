@@ -59,7 +59,7 @@
                         <asp:DataList ID="NoiDungBinhLuan" runat="server">
                             <ItemTemplate>
                          <div class="media mt-3 p-1">
-                            <img src='Uploads/<%# Eval("hinhdaidien") %> ' class="mr-2 rounded-circle" height="36"
+                            <img src='Uploads/avatar/<%# Eval("hinhdaidien") %> ' class="mr-2 rounded-circle" height="36"
                                 alt='<%# Eval("tennguoidung") %>'>
                             <div class="media-body">
                                 <h5 class="mt-0 mb-0">

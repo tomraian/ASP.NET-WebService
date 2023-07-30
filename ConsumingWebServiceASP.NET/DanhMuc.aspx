@@ -8,7 +8,7 @@
                     <div class="media">
                         <a href="">
                             <img src="Uploads/<%# Eval("hinhthunho") %>" alt="image"
-                                class="mr-3 d-none d-sm-block avatar"></a>
+                                class="mr-3 d-none d-sm-block avatar" width="250px"></a>
                         <div class="media-body">
                             <a href="#" class="mb-1 mt-0 text-dark"><%# Eval("tieude") %></a>
                             <div class="mt-2">

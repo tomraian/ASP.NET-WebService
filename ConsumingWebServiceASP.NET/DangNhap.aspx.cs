@@ -13,28 +13,22 @@ public partial class DangNhap : System.Web.UI.Page
     protected ServiceTinTuc.WebService1SoapClient ServiceTinTuc = new ServiceTinTuc.WebService1SoapClient();
     protected void Page_Load(object sender, EventArgs e)
     {
-        emailaddress.Value = "admin@gmail.com";
-
-        if (Request.Cookies["Auth_Status"] != null && Request.Cookies["Auth_Status"].Value == "true")
-        {
-            Response.Redirect("/Admin");
-        }
+        emailaddress.Value = "Dinh@gmail.com";
     }
     protected void BtnDangNhap_Click(object sender, EventArgs e)
     {
         string Email = emailaddress.Value;
         string MatKhau = password.Value;
-        int CheckLogin = ServiceTinTuc.Authencation(Email, MatKhau, 3);
+        int CheckLogin = ServiceTinTuc.Authencation(Email, MatKhau, 1);
         if (CheckLogin == 1)
         {
-
             DataSet NguoiDung = ServiceTinTuc.LayDuLieu("nguoidung where email = '" + Email + "' ");
             string MaNguoiDung = NguoiDung.Tables[0].Rows[0]["MaNguoiDung"].ToString();
             string TenNguoiDung = NguoiDung.Tables[0].Rows[0]["TenNguoiDung"].ToString();
             string HinhDaiDien = NguoiDung.Tables[0].Rows[0]["HinhDaiDien"].ToString();
 
             HttpCookie Auth_Status = new HttpCookie("Auth_Status", "true");
-            HttpCookie Auth_type = new HttpCookie("Auth_type", "sa");
+            HttpCookie Auth_type = new HttpCookie("Auth_type", "user");
             HttpCookie Auth_Id = new HttpCookie("Auth_Id", MaNguoiDung);
             HttpCookie Auth_Name = new HttpCookie("Auth_Name", TenNguoiDung);
             HttpCookie Auth_Avatar = new HttpCookie("Auth_Avatar", HinhDaiDien);
@@ -64,11 +58,13 @@ public partial class DangNhap : System.Web.UI.Page
         }
         else if (CheckLogin == 0)
         {
-            Debug.Text = "Sai email hiac mk";
+            Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Sai Email hoặc mật khẩu',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c '}) });</script>");
+
         }
         else
         {
-            Debug.Text = "co loi vua xat ra";
+            Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Có lỗi xảy ra',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c '}) });</script>");
+
         }
     }
 

@@ -442,11 +442,11 @@ namespace WebService
             }
         }
         [WebMethod]
-        public DataSet LayBinhLuan(int manguoidung, int mabaiviet)
+        public DataSet LayBinhLuan(int mabaiviet)
         {
             using (SqlConnection con = new SqlConnection(conStr))
             {
-                string query = "SELECT *\r\nFROM BinhLuan bl\r\nINNER JOIN (\r\n    SELECT MaNguoiDung, TenNguoiDung,HinhDaiDien\r\n   FROM NguoiDung\r\n   GROUP BY Nguoidung.MaNguoiDung,Nguoidung.TenNguoiDung,Nguoidung.HinhDaiDien\r\n) nguoidung ON bl.MaNguoiDung = nguoidung.MaNguoiDung\r\nINNER JOIN(select mabaiviet from BaiViet group by MaBaiViet)mabaiviet on bl.MaBaiViet = mabaiviet.MaBaiViet\r\nwhere bl.MaBaiViet = '" + mabaiviet+"' and bl.MaNguoiDung = '"+manguoidung+"' ";
+                string query = "select BinhLuan.*,NguoiDung.* from BinhLuan inner join NguoiDung on BinhLuan.MaNguoiDung = NguoiDung.MaNguoiDung where MaBaiViet = '"+ mabaiviet +"'";
                 SqlCommand cmd = new SqlCommand(query, con);
                 DataSet ds = new DataSet();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -473,6 +473,39 @@ namespace WebService
             {
                 con.Open();
                 string query = "select BinhLuan.*,NguoiDung.TenNguoiDung,BaiViet.TieuDe from BinhLuan inner join NguoiDung on BinhLuan.MaNguoiDung = NguoiDung.MaNguoiDung inner join BaiViet on BinhLuan.MaBaiViet = BaiViet.MaBaiViet";
+                SqlCommand cmd = new SqlCommand(query, con);
+                DataSet ds = new DataSet();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(ds);
+                return ds;
+            }
+        }
+        [WebMethod]
+        public bool DangKy(string UserName, string email,string pass)
+        {
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                string query = "Insert Into NguoiDung(TenNguoiDung,Email,MatKhau,VaiTro) values('" + UserName+ "','"+email+"','"+pass+"',1)";
+                SqlCommand cmd = new SqlCommand(query, con);
+                con.Open();
+                int count = cmd.ExecuteNonQuery();
+                if (count > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+        [WebMethod]
+        public DataSet loadNguoiDung()
+        {
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                con.Open();
+                string query = "select *,VaiTro.TenVaiTro from NguoiDung inner join VaiTro on NguoiDung.VaiTro = VaiTro.MaVaiTro";
                 SqlCommand cmd = new SqlCommand(query, con);
                 DataSet ds = new DataSet();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);

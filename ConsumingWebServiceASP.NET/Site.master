@@ -33,7 +33,7 @@
             <div class="container-fluid">
 
                 <!-- LOGO -->
-                <a href="index.html" class="topnav-logo">
+                <a href="Default.aspx" class="topnav-logo">
                     <span class="topnav-logo-lg">
                         <img src="assets/images/logo_sm_dark.png" alt="" height="16">
                     </span>
