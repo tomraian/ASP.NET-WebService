@@ -33,7 +33,7 @@
             <div class="container-fluid">
 
                 <!-- LOGO -->
-                <a href="index.html" class="topnav-logo">
+                <a href="Default.aspx" class="topnav-logo">
                     <span class="topnav-logo-lg">
                         <img src="assets/images/logo_sm_dark.png" alt="" height="16">
                     </span>
@@ -302,7 +302,7 @@
                             <div class="card-body pb-0" style="position: relative;">
                                 <asp:DataList runat="server" ID="TinTuc">
                                     <ItemTemplate>
-                                        <h6 class="text-muted text-uppercase mt-0" title="Revenue"><a href="/chitiet.aspx?Ma=<%# Eval("mabaiviet") %>"><%# Eval("tendanhmuc") %></a></h6>
+                                        <h6 class="text-muted text-uppercase mt-0" title="Revenue"><a href="/danhmuc.aspx?Ma=<%# Eval("mabaiviet") %>"><%# Eval("tendanhmuc") %></a></h6>
                                         <a href="/chitiet.aspx?Ma=<%# Eval("mabaiviet") %>" class="d-flex">
                                     <img src="Uploads/<%# Eval("hinhthunho") %>" alt="" width="30%" height="50%">
                                     <h3 class="ml-2 font-16 text-title mt-0"><%# Eval("TomTat") %></h3>

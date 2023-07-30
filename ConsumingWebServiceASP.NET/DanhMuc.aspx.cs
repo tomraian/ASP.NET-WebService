@@ -12,7 +12,8 @@ public partial class DanhMuc : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         string MaDanhMuc = Request.QueryString["Ma"];
-        LayBaiVietTheoDanhMuc.DataSource = ServiceTinTuc.LayDuLieu("BaiViet where madanhmuc = '"+MaDanhMuc+"'");
+        LayBaiVietTheoDanhMuc.DataSource = ServiceTinTuc.LoadDanhMuc(Convert.ToInt32(MaDanhMuc));
+        
         LayBaiVietTheoDanhMuc.DataBind();
     }
 }

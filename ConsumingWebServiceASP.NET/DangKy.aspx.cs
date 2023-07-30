@@ -19,44 +19,31 @@ public partial class DangNhap : System.Web.UI.Page
         //Response.SetCookie(cookie);
        
     }
-    protected void BtnDangNhap_Click(object sender, EventArgs e)
+    protected void BtnDangKy_Click(object sender, EventArgs e)
     {
-        string Email = emailaddress.Value;
-        string MatKhau = password.Value;
-        int CheckLogin = ServiceTinTuc.Authencation(Email, MatKhau, 1);
-        if (CheckLogin == 1)
+        string Username = username.Value;
+        string email = emailaddress.Value;
+        string pass = password.Value;
+        int count = ServiceTinTuc.LayDuLieu("Nguoidung where Email = '"+email+"'").Tables[0].Rows.Count;
+        if(count == 0)
         {
-            HttpCookie cookie = new HttpCookie("Auth_Info");
-
-            DataSet NguoiDung = ServiceTinTuc.LayDuLieu("nguoidung where email = '" + Email + "' ");
-            string MaNguoiDung = NguoiDung.Tables[0].Rows[0]["MaNguoiDung"].ToString();
-            string TenNguoiDung = NguoiDung.Tables[0].Rows[0]["TenNguoiDung"].ToString();
-
-            List<KeyValuePair<string, string>> kvpList = new List<KeyValuePair<string, string>>()
-{
-        new KeyValuePair<string, string>("UserId",MaNguoiDung ),
-        new KeyValuePair<string, string>("UserName",TenNguoiDung ),
-};
-
-            kvpList.Insert(0, new KeyValuePair<string, string>("New Key 1", "New Value 1"));
-            foreach (KeyValuePair<string, string> kvp in kvpList)
+            bool status = ServiceTinTuc.DangKy(Username, email, pass,1);
+            if (status)
             {
-                cookie.Value += string.Format("{0} {1}", kvp.Key, kvp.Value);
+                Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Đăng ký thành công',position: 'top-right',loaderBg: '#004b36',bgColor:'#0ACF97'}) });</script>");
             }
-            Response.Cookies.Add(cookie);
-            cookie.Expires = DateTime.Now.AddHours(3);
-            Response.SetCookie(cookie);
-            //Response.Redirect("Default.aspx");
+            else
+            {
+                Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Có lỗi xảy ra',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c '}) });</script>");
 
-        }
-        else if (CheckLogin == 0)
-        {
-            Debug.Text = "Sai email hiac mk";
+            }
         }
         else
         {
-            Debug.Text = "co loi vua xat ra";
+            Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Email đã tồn tại',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c '}) });</script>");
+
         }
+
     }
 
 }

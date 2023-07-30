@@ -19,7 +19,7 @@ public partial class ChiTiet : System.Web.UI.Page
         TinLienQuan.DataBind();
         TinMoiNhat.DataSource = ServiceTinTuc.LayNhungBaiVietMoiNhat();
         TinMoiNhat.DataBind();
-        NoiDungBinhLuan.DataSource = ServiceTinTuc.LayBinhLuan(3, Convert.ToInt32(Ma));
+        NoiDungBinhLuan.DataSource = ServiceTinTuc.LayBinhLuan(Convert.ToInt32(Ma));
         NoiDungBinhLuan.DataBind();
 
     }
@@ -27,14 +27,20 @@ public partial class ChiTiet : System.Web.UI.Page
     {
 
         string MabaiViet = Request.QueryString["Ma"];
-        int MaNguoiDung = 3;
-        DateTime ngaydang = DateTime.Now;
-        string NoiDungBinhLuan = txtNoiDungBinhLuan.Text;
-        bool status = ServiceTinTuc.ThemDuLieuBinhLuan(NoiDungBinhLuan, ngaydang, MaNguoiDung, Convert.ToInt32(MabaiViet));
-
+        if (Request.Cookies["Auth_Id"] != null )
+        {
+            int MaNguoiDung = Convert.ToInt32(Request.Cookies["Auth_Id"].Value);
+            DateTime ngaydang = DateTime.Now;
+            string NoiDungBinhLuan = txtNoiDungBinhLuan.Text;
+            bool status = ServiceTinTuc.ThemDuLieuBinhLuan(NoiDungBinhLuan, ngaydang, MaNguoiDung, Convert.ToInt32(MabaiViet));
         if (status)
         {
             Response.Redirect("chitiet.aspx?Ma=" + MabaiViet + "");
+        }
+        }
+        else
+        {
+            Response.Redirect("DangNhap.aspx");
         }
     }
 }

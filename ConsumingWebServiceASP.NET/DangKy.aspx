@@ -21,7 +21,7 @@
 
 <body class=" authentication-bg"
     data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
-    <asp:Label Text="text" ID="Debug" runat="server" />
+    <asp:Label ID="Debug" runat="server" />
     <form action="" id="id" runat="server">
         <div class="account-pages mt-5 mb-5">
             <div class="container">
@@ -47,11 +47,15 @@
                                     </p>
                                 </div>
                                 <div class="form-group">
+                                    <label for="UserName">User Name</label>
+                                    <input class="form-control" type="text" id="username"
+                                        placeholder="Enter your name" runat="server" value="haha">
+                                </div>
+                                <div class="form-group">
                                     <label for="emailaddress">Email address</label>
                                     <input class="form-control" type="email" id="emailaddress" value="Dinh@gmail.com"
                                         placeholder="Enter your email" runat="server">
                                 </div>
-
                                 <div class="form-group">
                                     <a href="pages-recoverpw.html" class="text-muted float-right"><small>Forgot
                                                 your
@@ -68,8 +72,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group mb-0 text-center">
-                                    <asp:Button class="btn btn-primary" runat="server" ID="BtnDangNhap" OnClick="BtnDangNhap_Click" Text="Đăng ký"></asp:Button>
-                                    <%--                                        <asp:Button ID="Button1" runat="server" Text="Button" />--%>
+                                    <asp:Button class="btn btn-primary" runat="server" ID="BtnDangKy" OnClick="BtnDangKy_Click" Text="Đăng ký"></asp:Button>
                                 </div>
                             </div>
                             <!-- end card-body -->

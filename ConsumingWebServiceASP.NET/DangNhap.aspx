@@ -21,7 +21,7 @@
 
 <body class=" authentication-bg"
     data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
-    <asp:Label Text="text" ID="Debug" runat="server" />
+    <asp:Label Text="" ID="Debug" runat="server" />
     <form action="" id="id" runat="server">
         <div class="account-pages mt-5 mb-5">
             <div class="container">

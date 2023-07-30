@@ -358,7 +358,6 @@
       <s:element name="LayBinhLuan">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="manguoidung" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="mabaiviet" type="s:int" />
           </s:sequence>
         </s:complexType>
@@ -400,6 +399,61 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="LoadBinhLuanResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DangKy">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pass" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="vaitro" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DangKyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DangKyResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="loadNguoiDung">
+        <s:complexType />
+      </s:element>
+      <s:element name="loadNguoiDungResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="loadNguoiDungResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadDanhMuc">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Madanhmuc" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadDanhMucResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoadDanhMucResult">
               <s:complexType>
                 <s:sequence>
                   <s:element ref="s:schema" />
@@ -556,6 +610,24 @@
   <wsdl:message name="LoadBinhLuanSoapOut">
     <wsdl:part name="parameters" element="tns:LoadBinhLuanResponse" />
   </wsdl:message>
+  <wsdl:message name="DangKySoapIn">
+    <wsdl:part name="parameters" element="tns:DangKy" />
+  </wsdl:message>
+  <wsdl:message name="DangKySoapOut">
+    <wsdl:part name="parameters" element="tns:DangKyResponse" />
+  </wsdl:message>
+  <wsdl:message name="loadNguoiDungSoapIn">
+    <wsdl:part name="parameters" element="tns:loadNguoiDung" />
+  </wsdl:message>
+  <wsdl:message name="loadNguoiDungSoapOut">
+    <wsdl:part name="parameters" element="tns:loadNguoiDungResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoadDanhMucSoapIn">
+    <wsdl:part name="parameters" element="tns:LoadDanhMuc" />
+  </wsdl:message>
+  <wsdl:message name="LoadDanhMucSoapOut">
+    <wsdl:part name="parameters" element="tns:LoadDanhMucResponse" />
+  </wsdl:message>
   <wsdl:portType name="WebService1Soap">
     <wsdl:operation name="checkSession">
       <wsdl:input message="tns:checkSessionSoapIn" />
@@ -652,6 +724,18 @@
     <wsdl:operation name="LoadBinhLuan">
       <wsdl:input message="tns:LoadBinhLuanSoapIn" />
       <wsdl:output message="tns:LoadBinhLuanSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DangKy">
+      <wsdl:input message="tns:DangKySoapIn" />
+      <wsdl:output message="tns:DangKySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="loadNguoiDung">
+      <wsdl:input message="tns:loadNguoiDungSoapIn" />
+      <wsdl:output message="tns:loadNguoiDungSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadDanhMuc">
+      <wsdl:input message="tns:LoadDanhMucSoapIn" />
+      <wsdl:output message="tns:LoadDanhMucSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WebService1Soap" type="tns:WebService1Soap">
@@ -872,6 +956,33 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="DangKy">
+      <soap:operation soapAction="http://tempuri.org/DangKy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="loadNguoiDung">
+      <soap:operation soapAction="http://tempuri.org/loadNguoiDung" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadDanhMuc">
+      <soap:operation soapAction="http://tempuri.org/LoadDanhMuc" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="WebService1Soap12" type="tns:WebService1Soap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -1084,6 +1195,33 @@
     </wsdl:operation>
     <wsdl:operation name="LoadBinhLuan">
       <soap12:operation soapAction="http://tempuri.org/LoadBinhLuan" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DangKy">
+      <soap12:operation soapAction="http://tempuri.org/DangKy" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="loadNguoiDung">
+      <soap12:operation soapAction="http://tempuri.org/loadNguoiDung" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadDanhMuc">
+      <soap12:operation soapAction="http://tempuri.org/LoadDanhMuc" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
