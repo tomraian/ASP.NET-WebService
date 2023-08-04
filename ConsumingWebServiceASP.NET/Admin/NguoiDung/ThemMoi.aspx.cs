@@ -25,26 +25,32 @@ public partial class Admin_NguoiDung_ThemMoi : System.Web.UI.Page
         var email = Email.Text.ToString();
         var pass = password.Text.ToString();
         var vaitro = VaiTro.Text.ToString();
-
-        DataSet NguoiDung = ServiceTinTuc.LayDuLieu("NguoiDung where Email = '" + email + "' ");
-        int count = NguoiDung.Tables[0].Rows.Count;
-        if (count == 0)
+        if (tennguoidung == "" || email == "" || pass == "" || vaitro == "")
         {
-            bool status = ServiceTinTuc.DangKy(tennguoidung, email, pass, Convert.ToInt32(vaitro));
-            if (status)
-            {
-                Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Đăng ký thành công',position: 'top-right',loaderBg: '#004b36',bgColor:'#0ACF97'}) });</script>");
-            }
-            else
-            {
-                Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Có lỗi xảy ra',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c '}) });</script>");
-
-            }
+            Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Vui lòng nhập đủ các trường',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c '}) });</script>");
         }
         else
         {
-            Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Email đã tồn tại',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c '}) });</script>");
+            DataSet NguoiDung = ServiceTinTuc.LayDuLieu("NguoiDung where Email = '" + email + "' ");
+            int count = NguoiDung.Tables[0].Rows.Count;
+            if (count == 0)
+            {
+                bool status = ServiceTinTuc.DangKy(tennguoidung, email, pass, Convert.ToInt32(vaitro));
+                if (status)
+                {
+                    Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Đăng ký thành công',position: 'top-right',loaderBg: '#004b36',bgColor:'#0ACF97'}) });</script>");
+                }
+                else
+                {
+                    Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Có lỗi xảy ra',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c '}) });</script>");
 
+                }
+            }
+            else
+            {
+                Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Email đã tồn tại',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c '}) });</script>");
+
+            }
         }
     }
 
@@ -54,26 +60,32 @@ public partial class Admin_NguoiDung_ThemMoi : System.Web.UI.Page
         var email = Email.Text.ToString();
         var pass = password.Text.ToString();
         var vaitro = VaiTro.Text.ToString();
-
-        DataSet NguoiDung = ServiceTinTuc.LayDuLieu("NguoiDung where Email = '" + email + "' ");
-        int count = NguoiDung.Tables[0].Rows.Count;
-        if (count == 0)
+        if (tennguoidung == "" || email == "" || pass == "" || vaitro == "")
         {
-            bool status = ServiceTinTuc.DangKy(tennguoidung, email, pass, Convert.ToInt32(vaitro));
-            if (status)
-            {
-                Response.Redirect("DanhSach.aspx");
-            }
-            else
-            {
-                Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Có lỗi xảy ra',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c '}) });</script>");
-
-            }
+            Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Vui lòng nhập đủ các trường',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c '}) });</script>");
         }
         else
         {
-            Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Email đã tồn tại',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c '}) });</script>");
+            DataSet NguoiDung = ServiceTinTuc.LayDuLieu("NguoiDung where Email = '" + email + "' ");
+            int count = NguoiDung.Tables[0].Rows.Count;
+            if (count == 0)
+            {
+                bool status = ServiceTinTuc.DangKy(tennguoidung, email, pass, Convert.ToInt32(vaitro));
+                if (status)
+                {
+                    Response.Redirect("DanhSach.aspx");
+                }
+                else
+                {
+                    Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Có lỗi xảy ra',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c '}) });</script>");
 
+                }
+            }
+            else
+            {
+                Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Email đã tồn tại',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c '}) });</script>");
+
+            }
         }
     }
 }

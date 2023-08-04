@@ -111,8 +111,18 @@ public partial class Admin_Default : System.Web.UI.Page
     }
     protected void UploadImage_Click(object sender, EventArgs e)
     {
-        ServiceTinTuc.UploadFile(FileImage.FileName, ChuThichFile.Text, FileImage.FileContent.ToString(), FileImage.FileBytes);
-        Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Upload ảnh thành công',position: 'top-right',loaderBg: '#004b36',bgColor:'#0ACF97'}) });</script>");
-        ExploreImage();
+        if (FileImage.HasFile)
+        {
+            string pathName = Path.GetExtension(FileImage.FileName.ToString());
+            string fileName = Init_SlugName(FileImage.FileName.ToString() + "-" + DateTime.Now + "-" + 1) + pathName;
+
+            ServiceTinTuc.UploadFile(fileName, ChuThichFile.Text, FileImage.FileContent.ToString(), FileImage.FileBytes);
+            Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Upload ảnh thành công',position: 'top-right',loaderBg: '#004b36',bgColor:'#0ACF97'}) });</script>");
+            ExploreImage();
+        }
+        else
+        {
+            Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Chưa chọn ảnh để upload',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c '}) });</script>");
+        }
     }
 }

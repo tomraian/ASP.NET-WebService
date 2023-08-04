@@ -20,27 +20,32 @@ public partial class DangNhap : System.Web.UI.Page
         string Username = username.Value;
         string email = emailaddress.Value;
         string pass = password.Value;
-        DataSet NguoiDung = ServiceTinTuc.LayDuLieu("NguoiDung where Email = '" + email + "' ");
-        int count = NguoiDung.Tables[0].Rows.Count;
-        if (count == 0)
+        if (username.ToString() == "" || email.ToString() == "" || pass.ToString() == "")
         {
-            bool status = ServiceTinTuc.DangKy(Username, email, pass, 1);
-            if (status)
-            {
-                Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Đăng ký thành công',position: 'top-right',loaderBg: '#004b36',bgColor:'#0ACF97'}) });</script>");
-            }
-            else
-            {
-                Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Có lỗi xảy ra',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c '}) });</script>");
-
-            }
+            Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Nhập đủ các trường',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c '}) });</script>");
         }
         else
         {
-            Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Email đã tồn tại',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c '}) });</script>");
 
+            DataSet NguoiDung = ServiceTinTuc.LayDuLieu("NguoiDung where Email = '" + email + "' ");
+            int count = NguoiDung.Tables[0].Rows.Count;
+            if (count == 0)
+            {
+                bool status = ServiceTinTuc.DangKy(Username, email, pass, 1);
+                if (status)
+                {
+                    Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Đăng ký thành công',position: 'top-right',loaderBg: '#004b36',bgColor:'#0ACF97'}) });</script>");
+                }
+                else
+                {
+                    Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Có lỗi xảy ra',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c '}) });</script>");
+
+                }
+            }
+            else
+            {
+                Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Email đã tồn tại',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c '}) });</script>");
+            }
         }
-
     }
-
 }

@@ -37,16 +37,12 @@
                             <div class="form-group mb-3">
                                 <label for="simpleinput">
                                     Tiêu đề bài viết
-                                        <span class="text-muted font-14">(Tối đa <code>50 </code>ký tự)
-                                        </span>
                                 </label>
                                 <asp:TextBox ID="TieuDe" runat="server" class="form-control"></asp:TextBox>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="simpleinput">
                                     Tóm tắt bài viết
-                                        <span class="text-muted font-14">(Tối đa <code>50 </code>ký tự)
-                                        </span>
                                 </label>
                                 <asp:TextBox ID="TomTat" runat="server" class="form-control"></asp:TextBox>
                             </div>
@@ -107,14 +103,6 @@
                                 <div class="card-body">
                                     <h4 class="header-title">Hình ảnh đại diện</h4>
                                     <p class="text-muted font-14">
-                                        Most common form control, text-based input fields. Includes support for all
-                                            HTML5 types: <code>text</code>, <code>password</code>,
-                                            <code>datetime</code>,
-                                            <code>datetime-local</code>, <code>date</code>, <code>month</code>,
-                                            <code>time</code>, <code>week</code>, <code>number</code>,
-                                            <code>email</code>,
-                                            <code>url</code>, <code>search</code>, <code>tel</code>, and
-                                            <code>color</code>.
                                     </p>
 
 

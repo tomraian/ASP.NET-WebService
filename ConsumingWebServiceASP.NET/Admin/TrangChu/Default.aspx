@@ -2,8 +2,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
     <div class="row">
-        <div class="col-6">123123</div>
-        <div class="col-6">22</div>
+        <div class="col-12">
+            <img src="../../assets/images/trangchu.jpg" alt="Cố gắng nào" />
+        </div>
     </div>
 </asp:Content>
 

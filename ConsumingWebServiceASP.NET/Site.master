@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Đăng nhập người dùng | Hyper - Responsive Bootstrap 4 Admin Dashboard</title>
+    <title>Người Dùng | BaoMoi  </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
@@ -197,10 +197,10 @@
                                 </div>
 
                                 <!-- item-->
-                                <a href="TaiKhoan.aspx" class="dropdown-item notify-item">
+                                <%--      <a href="TaiKhoan.aspx" class="dropdown-item notify-item">
                                     <i class="mdi mdi-account-circle mr-1"></i>
                                     <span>Tài khoản của tôi</span>
-                                </a>
+                                </a>--%>
                                 <a href="DangXuat.aspx" class="dropdown-item notify-item">
                                     <i class="mdi mdi-exit-to-app mr-1"></i>
                                     <span>Đăng xuất</span>
