@@ -40,10 +40,9 @@
                             <div class="card-body p-4">
 
                                 <div class="text-center w-75 m-auto">
-                                    <h4 class="text-dark-50 text-center mt-0 font-weight-bold">Sign In</h4>
+                                    <h4 class="text-dark-50 text-center mt-0 font-weight-bold">Đăng nhập</h4>
                                     <p class="text-muted mb-4">
-                                        Enter your email address and password to access admin
-                                            panel.
+                                        Đăng nhập để truy cập vào khu vực quản trị
                                     </p>
                                 </div>
                                 <div class="form-group">

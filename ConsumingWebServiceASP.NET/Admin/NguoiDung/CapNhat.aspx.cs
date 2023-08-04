@@ -65,16 +65,17 @@ public partial class Admin_Default : System.Web.UI.Page
         var sdt = "";
         var gioitinh = "";
         var vaitro = VaiTro.Text.ToString();
-        bool status = ServiceTinTuc.CapNhatDuLieuNguoiDung(Convert.ToInt32(MaNguoiDung), tennguoidung, email, pass, hinhanh, DateTime.Now, diachi, Convert.ToInt32(sdt), Convert.ToByte(gioitinh), Convert.ToInt32(vaitro));
+        Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Vui lòng thử lại sau, chức năng chưa khả dụng',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c'}) });</script>");
+        //bool status = ServiceTinTuc.CapNhatDuLieuNguoiDung(Convert.ToInt32(MaNguoiDung), tennguoidung, email, pass, hinhanh, DateTime.Now, diachi, Convert.ToInt32(sdt), Convert.ToByte(gioitinh), Convert.ToInt32(vaitro));
 
-        if (status == true)
-        {
-            Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Cập nhật thành công',position: 'top-right',loaderBg: '#004b36',bgColor:'#0ACF97'}) });</script>");
-        }
-        else
-        {
-            Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Cập nhật thất bại',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c '}) });</script>");
-        }
+        //if (status == true)
+        //{
+        //    Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Cập nhật thành công',position: 'top-right',loaderBg: '#004b36',bgColor:'#0ACF97'}) });</script>");
+        //}
+        //else
+        //{
+        //    Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Cập nhật thất bại',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c '}) });</script>");
+        //}
     }
 
     protected void SubmitBack_Click(object sender, EventArgs e)
@@ -89,16 +90,18 @@ public partial class Admin_Default : System.Web.UI.Page
         var sdt = sodienthoai.Value;
         var gioitinh = GioiTinh.Value;
         var vaitro = VaiTro.Text.ToString();
-        ServiceTinTuc.WebService1SoapClient ServiceTinTuc = new ServiceTinTuc.WebService1SoapClient();
-        bool status = ServiceTinTuc.CapNhatDuLieuNguoiDung(Convert.ToInt32(MaNguoiDung), tennguoidung, email, pass, hinhanh, Convert.ToDateTime(ngaysinh), diachi, Convert.ToInt32(sdt), Convert.ToByte(gioitinh), Convert.ToInt32(vaitro));
+        Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Vui lòng thử lại sau, chức năng chưa khả dụng',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c'}) });</script>");
 
-        if (status == true)
-        {
-            Response.Redirect("DanhSach.aspx");
-        }
-        else
-        {
-            Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Cập nhật thất bại',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c '}) });</script>");
-        }
+        //ServiceTinTuc.WebService1SoapClient ServiceTinTuc = new ServiceTinTuc.WebService1SoapClient();
+        //bool status = ServiceTinTuc.CapNhatDuLieuNguoiDung(Convert.ToInt32(MaNguoiDung), tennguoidung, email, pass, hinhanh, Convert.ToDateTime(ngaysinh), diachi, Convert.ToInt32(sdt), Convert.ToByte(gioitinh), Convert.ToInt32(vaitro));
+
+        //if (status == true)
+        //{
+        //    Response.Redirect("DanhSach.aspx");
+        //}
+        //else
+        //{
+        //    Response.Write("<script>window.addEventListener('load', (event) => { $.toast({heading: 'Thông báo',text: 'Cập nhật thất bại',position: 'top-right',loaderBg: '#923f50',bgColor:'#fa5c7c '}) });</script>");
+        //}
     }
 }

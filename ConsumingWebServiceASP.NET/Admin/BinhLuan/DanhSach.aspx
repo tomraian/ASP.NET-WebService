@@ -1,13 +1,13 @@
 ﻿<%@ Page Title="Danh sách bình luận" Language="C#" MasterPageFile="~/Admin/TrangChu/Admin.master" AutoEventWireup="true" CodeFile="DanhSach.aspx.cs" Inherits="Admin_BinhLuan_DanhSach" %>
 
-<asp:Content ID="Content3" ContentPlaceHolderID="jsContent" runat="Server">
+<asp:Content ID="Content3" ContentPlaceHolderID="cssContent" runat="Server">
     <!-- datatable  -->
     <link href="../../assets/css/vendor/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
     <link href="../../assets/css/vendor/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 
 
-<asp:Content ID="Content1" ContentPlaceHolderID="cssContent" runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="jsContent" runat="Server">
     <!-- Datatables js -->
     <script src="../../assets/js/vendor/jquery.dataTables.min.js"></script>
     <script src="../../assets/js/vendor/dataTables.bootstrap4.js"></script>
@@ -34,7 +34,7 @@
         });
     </script>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
 
     <div class="row">
         <div class="col-12">
